@@ -21,8 +21,9 @@ abstract class MainLayout
   end
 
   private def render_signed_in_user
-    text @current_user.email
-    text " - "
-    link "Sign out", to: SignIns::Delete, flow_id: "sign-out-button"
+    nav do
+      link "Sign out", to: SignIns::Delete, flow_id: "sign-out-button"
+      link "New Bit", to: Bits::New
+    end
   end
 end
