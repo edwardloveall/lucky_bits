@@ -6,7 +6,7 @@ class SignUps::Create < BrowserAction
       if user
         flash.info = "Thanks for signing up"
         sign_in(user)
-        redirect to: Home::Index
+        redirect to: Bits::Index
       else
         flash.info = "Couldn't sign you up"
         render NewPage, form: form

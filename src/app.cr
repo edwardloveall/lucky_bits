@@ -1,6 +1,7 @@
 require "./dependencies"
 require "./models/base_model"
 require "./models/mixins/**"
+require "./models/user"
 require "./models/**"
 require "./queries/mixins/**"
 require "./queries/**"

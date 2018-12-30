@@ -1,0 +1,14 @@
+class CreateBits::V20181229204526 < LuckyRecord::Migrator::Migration::V1
+  def migrate
+    create :bits do
+      add title : String
+      add url : String
+      add description : String?
+      add_belongs_to user : User, on_delete: :cascade
+    end
+  end
+
+  def rollback
+    drop :bits
+  end
+end
