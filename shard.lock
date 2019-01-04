@@ -50,7 +50,7 @@ shards:
 
   lucky_record:
     github: luckyframework/lucky_record
-    version: 0.7.0
+    commit: 6dfa3e2f801bf810cd4998ec36c9a53f51ab30c2
 
   lucky_router:
     github: luckyframework/lucky_router

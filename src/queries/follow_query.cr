@@ -1,2 +1,21 @@
 class FollowQuery < Follow::BaseQuery
+  def self.followers(for user : User)
+    new.followers(for: user)
+  end
+
+  def followers(for user : User)
+    preload_from.
+      where("accepted_at IS NOT NULL").
+      to_id(user.id)
+  end
+
+  def self.follow_requests(for user : User)
+    new.follow_requests(for: user)
+  end
+
+  def follow_requests(for user : User)
+    preload_from.
+      where("accepted_at IS NULL").
+      to_id(user.id)
+  end
 end

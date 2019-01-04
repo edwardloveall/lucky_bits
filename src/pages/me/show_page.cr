@@ -1,17 +1,29 @@
 class Me::ShowPage < MainLayout
+  needs follow_requests : FollowQuery
+  needs followers : FollowQuery
+
   def content
-    h1 "This is your profile"
     h3 "Email:  #{@current_user.email}"
-    helpful_tips
+    list_follow_requests(@follow_requests)
+    list_followers(@followers)
   end
 
-  private def helpful_tips
-    h3 "Next, you may want to:"
+  private def list_follow_requests(follow_requests : FollowQuery)
+    h3 "Follow Requests"
     ul do
-      li "Modify this page: src/pages/me/show_page.cr"
-      li "Change what route you go to after sign in: src/actions/home/index.cr"
-      li "To add pages that do not require sign in, include the" +
-         "Auth::SkipRequireSignIn module in your actions"
+      follow_requests.each do |follow|
+        li "#{follow.from.email}"
+        link "Allow", to: Follows::Update.with(follow.id)
+      end
+    end
+  end
+
+  private def list_followers(followers : FollowQuery)
+    h3 "Followers"
+    ul do
+      followers.each do |follow|
+        li "#{follow.from.email}"
+      end
     end
   end
 end
