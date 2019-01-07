@@ -4,6 +4,6 @@ class Follows::Update < BrowserAction
     follow = follows.id(params.get(:id)).first
     FollowAcceptForm.update!(follow)
     flash.success = "#{follow.from.email} is now following you!"
-    redirect Me::Show
+    redirect Follows::Index
   end
 end
