@@ -1,7 +1,5 @@
 class Me::Show < BrowserAction
   get "/me" do
-    follow_requests = FollowQuery.follow_requests(for: current_user)
-    followers = FollowQuery.followers(for: current_user)
-    render ShowPage, follow_requests: follow_requests, followers: followers
+    render ShowPage, bits: BitQuery.new.preload_user.user_id(current_user.id)
   end
 end

@@ -7,10 +7,6 @@ class BitQuery < Bit::BaseQuery
     created_at.desc_order
   end
 
-  def for_user(user : User)
-    user_id.not(user.id)
-  end
-
   def self.followed(by user : User)
     new.followed(user)
   end
