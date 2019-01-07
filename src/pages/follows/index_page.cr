@@ -5,7 +5,6 @@ class Follows::IndexPage < MainLayout
 
   def content
     link "Follow someone", to: Follows::New
-    h3 "Email:  #{@current_user.email}"
     list_follow_requests(@follow_requests)
     list_followers(@followers)
     list_following(@following)

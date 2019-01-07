@@ -22,8 +22,12 @@ abstract class MainLayout
 
   private def render_signed_in_user
     nav do
-      link "Sign out", to: SignIns::Delete, flow_id: "sign-out-button"
-      link "New Bit", to: Bits::New
+      ul do
+        li { link @current_user.email, to: Me::Show }
+        li { link "Sign out", to: SignIns::Delete, flow_id: "sign-out-button" }
+        li { link "New Bit", to: Bits::New }
+        li { link "Follows", to: Follows::Index }
+      end
     end
   end
 end
