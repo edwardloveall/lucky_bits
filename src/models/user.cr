@@ -5,6 +5,8 @@ class User < BaseModel
   table :users do
     column email : String
     column encrypted_password : String
+    has_many bits : Bit
+    has_many follows : Follow, foreign_key: :to_id
   end
 
   def emailable
