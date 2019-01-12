@@ -1,3 +1,4 @@
+require "xml"
 require "./dependencies"
 require "./models/base_model"
 require "./models/mixins/**"
