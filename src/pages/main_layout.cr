@@ -25,7 +25,7 @@ abstract class MainLayout
       ul do
         li { link @current_user.email, to: Me::Show }
         li { link "Sign out", to: SignIns::Delete, flow_id: "sign-out-button" }
-        li { link "New Bit", to: Bits::New }
+        li { link "New Bit", to: Bits::New, flow_id: "new-bit-link" }
         li { link "Follows", to: Follows::Index }
       end
     end

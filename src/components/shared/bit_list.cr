@@ -3,7 +3,7 @@ module Shared::BitList
     ul class: "bits" do
       bits.each do |bit|
         li class: "bit" do
-          link bit.title, to: bit.url
+          link bit.title, to: bit.url, flow_id: "bit-title"
           para "from: #{bit.user.email}"
         end
       end

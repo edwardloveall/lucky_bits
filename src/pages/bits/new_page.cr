@@ -26,7 +26,7 @@ class Bits::NewPage < MainLayout
       end
 
       div class: "action" do
-        submit "Create Bit"
+        submit "Create Bit", flow_id: "create-bit-form-submit"
       end
     end
   end
