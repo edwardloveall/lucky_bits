@@ -9,7 +9,8 @@ class Users::Follows::Create < BrowserAction
         flash.success = "Your invite has been sent for approval!"
         redirect Users::Show.with(user.id)
       else
-        render Users::ShowPage, user: user
+        flash.failure = "Something went wrong with that follow request..."
+        redirect Users::Show.with(user.id)
       end
     end
   end

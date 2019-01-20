@@ -28,4 +28,8 @@ class FollowQuery < Follow::BaseQuery
       where("accepted_at IS NOT NULL").
       from_id(user.id)
   end
+
+  def empty?
+    size.zero?
+  end
 end
