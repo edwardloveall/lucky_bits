@@ -1,4 +1,4 @@
-class FollowRequestForm < Follow::BaseForm
+class FollowRequestEmailForm < Follow::BaseForm
   needs current_user : User
   virtual email : String
 

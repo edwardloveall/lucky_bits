@@ -1,5 +1,5 @@
 class Follows::NewPage < MainLayout
-  needs follow_request_form : FollowRequestForm
+  needs follow_request_form : FollowRequestEmailForm
 
   def content
     render_follow_request_form(@follow_request_form)
