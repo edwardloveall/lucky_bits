@@ -10,6 +10,8 @@ class SignUpForm < User::BaseForm
 
   def prepare
     validate_uniqueness_of email
+    username.value = username.value.try(&.downcase)
+    validate_uniqueness_of username, query: UserQuery.new.username.lower
     run_password_validations
     Authentic.copy_and_encrypt password, to: encrypted_password
     feed_token.value = generate_feed_token
