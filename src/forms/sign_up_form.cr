@@ -2,6 +2,7 @@ class SignUpForm < User::BaseForm
   # Change password validations in src/forms/mixins/password_validations.cr
   include PasswordValidations
 
+  fillable username
   fillable email
   fillable feed_token
   virtual password : String

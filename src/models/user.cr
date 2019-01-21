@@ -6,6 +6,7 @@ class User < BaseModel
     column email : String
     column encrypted_password : String
     column feed_token : String
+    column username : String
     has_many bits : Bit
     has_many follows : Follow, foreign_key: :to_id
   end

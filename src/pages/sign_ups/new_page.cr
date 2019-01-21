@@ -15,7 +15,8 @@ class SignUps::NewPage < GuestLayout
   end
 
   private def sign_up_fields(f)
-    field(f.email) { |i| email_input i, autofocus: "true" }
+    field(f.username) { |i| text_input i, autofocus: "true" }
+    field(f.email) { |i| email_input i }
     field(f.password) { |i| password_input i }
     field(f.password_confirmation) { |i| password_input i }
   end

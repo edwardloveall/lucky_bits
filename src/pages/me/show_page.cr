@@ -4,7 +4,7 @@ class Me::ShowPage < MainLayout
   needs bits : BitQuery
 
   def content
-    h3 "Email:  #{@current_user.email}"
+    h3 "#{@current_user.username}"
     bit_list(@bits)
   end
 end
