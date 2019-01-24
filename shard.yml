@@ -23,7 +23,6 @@ dependencies:
   carbon:
     github: luckyframework/carbon
     version: ~> 0.1.0
-
   lucky_flow:
     github: luckyframework/lucky_flow
-    version: ~> 0.3
+    commit: 32bfe28835af631786252948d97f0aa3c0c62536
