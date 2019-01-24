@@ -1,6 +1,6 @@
 class Follows::Create < BrowserAction
   route do
-    FollowRequestEmailForm.create(
+    FollowRequestUsernameForm.create(
       params: params,
       current_user: current_user,
     ) do |form, follow|

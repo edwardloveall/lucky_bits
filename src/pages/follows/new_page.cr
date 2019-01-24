@@ -1,5 +1,5 @@
 class Follows::NewPage < MainLayout
-  needs follow_request_form : FollowRequestEmailForm
+  needs follow_request_form : FollowRequestUsernameForm
 
   def content
     render_follow_request_form(@follow_request_form)
@@ -7,7 +7,7 @@ class Follows::NewPage < MainLayout
 
   private def render_follow_request_form(form)
     form_for Follows::Create do
-      field(form.email) { |field| text_input field }
+      field(form.username) { |field| text_input field }
 
       submit "Request to follow", flow_id: "create-follow-request-form-submit"
     end

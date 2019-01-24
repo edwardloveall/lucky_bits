@@ -14,18 +14,18 @@ class FollowFlow < BaseFlow
 
   def follow(user to_follow : User)
     fill_form(
-      FollowRequestEmailForm,
-      email: to_follow.email,
+      FollowRequestUsernameForm,
+      username: to_follow.username,
     )
     click "@create-follow-request-form-submit"
   end
 
   def allow_user_to_follow(user to_follow : User)
-    allow_link = el("@allow-follow-#{to_follow.id}")
+    allow_link = el("@allow-follow-#{to_follow.username}")
     allow_link.click
   end
 
   def should_see_user_in_followers_list(user following : User)
-    el(".followers li", text: following.email)
+    el(".followers li", text: following.username)
   end
 end

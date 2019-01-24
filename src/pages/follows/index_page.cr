@@ -15,11 +15,11 @@ class Follows::IndexPage < MainLayout
       h3 "Follow Requests"
       ul do
         follow_requests.each do |follow|
-          li "#{follow.from.email}"
+          li "#{follow.from.username}"
           link(
             "Allow",
             to: Follows::Update.with(follow.id),
-            flow_id: "allow-follow-#{follow.from.id}"
+            flow_id: "allow-follow-#{follow.from.username}"
           )
         end
       end
@@ -31,7 +31,7 @@ class Follows::IndexPage < MainLayout
       h3 "Followers"
       ul do
         followers.each do |follow|
-          li "#{follow.from.email}"
+          li "#{follow.from.username}"
         end
       end
     end
@@ -42,7 +42,7 @@ class Follows::IndexPage < MainLayout
       h3 "Following"
       ul do
         following.each do |follow|
-          li "#{follow.to.email}"
+          li "#{follow.to.username}"
         end
       end
     end

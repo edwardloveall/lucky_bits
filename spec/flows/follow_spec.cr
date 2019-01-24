@@ -1,7 +1,7 @@
 require "../spec_helper"
 
 describe "User visits new follow page" do
-  it "creates a bit" do
+  it "can follow a user by their username" do
     user1 = UserBox.create(&.email("user1@example.com").username("user1"))
     user2 = UserBox.create(&.email("user2@example.com").username("user2"))
     flow1 = FollowFlow.new(user: user1)
