@@ -11,29 +11,39 @@ class Follows::IndexPage < MainLayout
   end
 
   private def list_follow_requests(follow_requests : FollowQuery)
-    h3 "Follow Requests"
-    ul do
-      follow_requests.each do |follow|
-        li "#{follow.from.email}"
-        link "Allow", to: Follows::Update.with(follow.id)
+    section class: "follow-requests" do
+      h3 "Follow Requests"
+      ul do
+        follow_requests.each do |follow|
+          li "#{follow.from.email}"
+          link(
+            "Allow",
+            to: Follows::Update.with(follow.id),
+            flow_id: "allow-follow-#{follow.from.id}"
+          )
+        end
       end
     end
   end
 
   private def list_followers(followers : FollowQuery)
-    h3 "Followers"
-    ul do
-      followers.each do |follow|
-        li "#{follow.from.email}"
+    section class: "followers" do
+      h3 "Followers"
+      ul do
+        followers.each do |follow|
+          li "#{follow.from.email}"
+        end
       end
     end
   end
 
   private def list_following(following : FollowQuery)
-    h3 "Following"
-    ul do
-      following.each do |follow|
-        li "#{follow.to.email}"
+    section class: "following" do
+      h3 "Following"
+      ul do
+        following.each do |follow|
+          li "#{follow.to.email}"
+        end
       end
     end
   end

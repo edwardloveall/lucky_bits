@@ -9,7 +9,7 @@ class Follows::NewPage < MainLayout
     form_for Follows::Create do
       field(form.email) { |field| text_input field }
 
-      submit "Request to follow"
+      submit "Request to follow", flow_id: "create-follow-request-form-submit"
     end
   end
 end
