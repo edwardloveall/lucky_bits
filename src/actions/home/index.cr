@@ -1,11 +1,11 @@
 class Home::Index < BrowserAction
-  include Auth::SkipRequireSignIn
+  include Auth::RedirectIfSignedIn
 
   get "/" do
     if current_user?
       redirect Bits::Index
     else
-      render Lucky::WelcomePage
+      render Home::IndexPage
     end
   end
 end
