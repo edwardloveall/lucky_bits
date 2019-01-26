@@ -7,33 +7,13 @@ class Bits::NewPage < MainLayout
 
   private def render_bit_form(form : BitForm)
     form_for Bits::Create do
-      div class: "field" do
-        label_and_errors_for(form.title) do |field|
-          text_input field
-        end
-      end
-
-      div class: "field" do
-        label_and_errors_for(form.url) do |field|
-          text_input field
-        end
-      end
-
-      div class: "field" do
-        label_and_errors_for(form.description) do |field|
-          textarea field
-        end
-      end
+      field(form.title) { |f| text_input f }
+      field(form.url) { |f| text_input f }
+      field(form.description) { |f| text_input f }
 
       div class: "action" do
         submit "Create Bit", flow_id: "create-bit-form-submit"
       end
     end
-  end
-
-  private def label_and_errors_for(field)
-    label_for field
-    yield(field)
-    errors_for field
   end
 end
