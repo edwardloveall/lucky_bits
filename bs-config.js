@@ -1,6 +1,10 @@
 // Docs: http://www.browsersync.io/docs/options/
 
 module.exports = {
+  browser: "default",
+  files: ["public/css/**/*.css", "public/js/**/*.js"],
+  ghostMode: false,
+  open: false,
   snippetOptions: {
     rule: {
       match: /<\/head>/i,
@@ -9,8 +13,4 @@ module.exports = {
       }
     }
   },
-  files: ["public/css/**/*.css", "public/js/**/*.js"],
-  watchEvents: ["change"],
-  open: "local",
-  browser: "default"
 };
