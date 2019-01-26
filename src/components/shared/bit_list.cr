@@ -4,7 +4,7 @@ module Shared::BitList
       bits.each do |bit|
         li class: "bit" do
           link bit.title, to: bit.url, flow_id: "bit-title"
-          para "from: #{bit.user.email}"
+          para "from: #{bit.user.username}"
         end
       end
     end
