@@ -21,10 +21,6 @@ module Shared::Layout
 
   abstract def page_title
 
-  # This is the default page title. If you remove this method the compiler will
-  # help you remember to include a `page_title` method for every page because
-  # we used `abstract def page_title` above. Alternatively, you can leave this
-  # here and override the `page_title` class only on the pages you care about.
   def page_title
     "Welcome"
   end

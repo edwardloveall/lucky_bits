@@ -1,9 +1,6 @@
 abstract class MainLayout
-  # Edit shared layout code in src/components/shared/layout.cr
   include Shared::Layout
 
-  # 'needs current_user : User' makes it so that the current_user
-  # is always required for pages using MainLayout
   needs current_user : User
 
   def render

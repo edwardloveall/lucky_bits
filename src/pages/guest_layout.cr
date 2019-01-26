@@ -1,5 +1,4 @@
 abstract class GuestLayout
-  # Edit shared layout code in src/components/shared/layout.cr
   include Shared::Layout
 
   def render
