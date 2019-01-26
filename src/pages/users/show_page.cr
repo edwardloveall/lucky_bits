@@ -8,7 +8,7 @@ class Users::ShowPage < MainLayout
     if @existing_follow_requests.try(&.empty?)
       link_to_follow(@user)
     else
-      para "We're waiting on #{@user.email} to confirm your follow request."
+      para "We're waiting on #{@user.username} to confirm your follow request."
     end
   end
 

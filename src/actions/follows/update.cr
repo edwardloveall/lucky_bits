@@ -3,7 +3,7 @@ class Follows::Update < BrowserAction
     follows = FollowQuery.follow_requests(for: current_user)
     follow = follows.id(params.get(:id)).first
     FollowAcceptForm.update!(follow)
-    flash.success = "#{follow.from.email} is now following you!"
+    flash.success = "#{follow.from.username} is now following you!"
     redirect Follows::Index
   end
 end
