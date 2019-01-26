@@ -3,7 +3,7 @@ class Users::ShowPage < MainLayout
   needs existing_follow_requests : FollowQuery
 
   def content
-    h2 @user.email
+    h2 @user.username
 
     if @existing_follow_requests.try(&.empty?)
       link_to_follow(@user)
