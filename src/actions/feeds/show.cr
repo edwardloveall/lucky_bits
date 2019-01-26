@@ -7,7 +7,7 @@ class Feeds::Show < FeedAction
     atom(
       feed do |xml|
         xml.element("title") { xml.text "LinkyBits" }
-        xml.element("subtitle") { xml.text "for #{current_user.email}" }
+        xml.element("subtitle") { xml.text "for #{current_user.username}" }
         xml.element(
           "link",
           rel: "alternate",
@@ -55,7 +55,7 @@ class Feeds::Show < FeedAction
       xml.element("published") { xml.text bit.created_at.to_rfc3339 }
       xml.element("updated") { xml.text bit.updated_at.to_rfc3339 }
       xml.element("author") do
-        xml.element("email") { xml.text bit.user.email }
+        xml.element("name") { xml.text bit.user.username }
       end
       xml.element("content", type: "html") do
         xml.text bit.description || ""
