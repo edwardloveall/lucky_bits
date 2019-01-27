@@ -20,10 +20,11 @@ abstract class MainLayout
   private def render_signed_in_user
     nav do
       ul do
-        li { link "My Page", to: Me::Show }
-        li { link "Sign Out", to: SignIns::Delete, flow_id: "sign-out-button" }
+        li { link "Home", to: Bits::Index }
         li { link "New Bit", to: Bits::New, flow_id: "new-bit-link" }
-        li { link "Follows", to: Follows::Index }
+        li { link "Follow", to: Follows::Index }
+        li { link "My Account", to: Me::Show }
+        li { link "Sign Out", to: SignIns::Delete, flow_id: "sign-out-button" }
       end
     end
   end
