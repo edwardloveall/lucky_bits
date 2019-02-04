@@ -2,12 +2,28 @@ class Follows::IndexPage < MainLayout
   needs follow_requests : FollowQuery
   needs followers : FollowQuery
   needs following : FollowQuery
+  needs recent_follows : FollowQuery
 
   def content
     link "Follow someone", to: Follows::New
+    list_recent_follows(@recent_follows)
     list_follow_requests(@follow_requests)
     list_followers(@followers)
     list_following(@following)
+  end
+
+  private def list_recent_follows(recent_follows : FollowQuery)
+    if !recent_follows.empty?
+      section class: "recent-follows" do
+        recent_follows.each do |follow|
+          link(
+            "Follow #{follow.from.username}",
+            to: Users::Follows::Create.with(user_id: follow.from.id),
+            flow_id: "follow-back-#{follow.from.username}"
+          )
+        end
+      end
+    end
   end
 
   private def list_follow_requests(follow_requests : FollowQuery)

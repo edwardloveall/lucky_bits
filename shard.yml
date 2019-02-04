@@ -13,7 +13,7 @@ crystal: 0.27.0
 dependencies:
   lucky_record:
     github: luckyframework/lucky_record
-    branch: master
+    commit: 6dfa3e2f801bf810cd4998ec36c9a53f51ab30c2
   lucky:
     github: luckyframework/lucky
     version: ~> 0.12

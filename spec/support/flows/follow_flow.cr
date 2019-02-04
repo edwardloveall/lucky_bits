@@ -25,7 +25,15 @@ class FollowFlow < BaseFlow
     allow_link.click
   end
 
+  def follow_back(user follower : User)
+    click("@follow-back-#{follower.username}")
+  end
+
   def should_see_user_in_followers_list(user following : User)
     el(".followers li", text: following.username)
+  end
+
+  def should_show_follow_request_to(user following : User)
+    el("@flash", text: "Your follow request has been sent to #{following.username} for approval!")
   end
 end

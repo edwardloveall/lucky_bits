@@ -29,6 +29,14 @@ class FollowQuery < Follow::BaseQuery
       from_id(user.id)
   end
 
+  def self.recent_follows(for user : User)
+    new.
+      preload_from.
+      to_id(user.id).
+      accepted_at.
+      gt(3.minute.ago)
+  end
+
   def empty?
     size.zero?
   end
