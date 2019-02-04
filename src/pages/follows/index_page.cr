@@ -13,15 +13,13 @@ class Follows::IndexPage < MainLayout
   end
 
   private def list_recent_follows(recent_follows : FollowQuery)
-    if !recent_follows.empty?
+    if follow = recent_follows.first?
       section class: "recent-follows" do
-        recent_follows.each do |follow|
-          link(
-            "Follow #{follow.from.username}",
-            to: Users::Follows::Create.with(user_id: follow.from.id),
-            flow_id: "follow-back-#{follow.from.username}"
-          )
-        end
+        link(
+          "Follow #{follow.from.username}",
+          to: Users::Follows::Create.with(user_id: follow.from.id),
+          flow_id: "follow-back-#{follow.from.username}"
+        )
       end
     end
   end
