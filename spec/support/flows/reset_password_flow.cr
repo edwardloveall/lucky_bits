@@ -1,15 +1,6 @@
-class ResetPasswordFlow < BaseFlow
-  private getter user, authentication_flow
-  delegate sign_in, sign_out, should_have_password_error, should_be_signed_in,
-    to: authentication_flow
+class ResetPasswordFlow < AuthenticatedBaseFlow
+  private getter user
   delegate email, to: user
-
-  def initialize(@user : User)
-    @authentication_flow = AuthenticationFlow.new(
-      email: user.email,
-      username: user.username
-    )
-  end
 
   def request_password_reset
     with_fake_token do

@@ -1,15 +1,7 @@
-class FollowFlow < BaseFlow
+class FollowFlow < AuthenticatedBaseFlow
   private getter user : User
 
   def initialize(@user : User)
-  end
-
-  def visit_new_follows_page
-    visit Follows::New, as: user
-  end
-
-  def visit_follows_page
-    visit Follows::Index, as: user
   end
 
   def follow(user to_follow : User)
@@ -18,6 +10,10 @@ class FollowFlow < BaseFlow
       username: to_follow.username,
     )
     click "@create-follow-request-form-submit"
+  end
+
+  def follow_back(user follower : User)
+    click("@follow-back-#{follower.username}")
   end
 
   def allow_user_to_follow(user to_follow : User)

@@ -27,7 +27,8 @@ class AuthenticationFlow < BaseFlow
     sign_out_button.should be_on_page
   end
 
-  def should_have_password_error
-    el("body", text: "Password is wrong").should be_on_page
+  def sign_out
+    visit Me::Show
+    sign_out_button.click
   end
 end

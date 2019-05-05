@@ -1,9 +1,4 @@
-class BitFlow < BaseFlow
-  private getter user : User
-
-  def initialize(@user)
-  end
-
+class BitFlow < AuthenticatedBaseFlow
   def visit_bit_index
     visit Bits::Index, as: user
   end
