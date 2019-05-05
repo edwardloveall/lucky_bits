@@ -4,9 +4,9 @@ class Follows::IndexPage < MainLayout
   needs following : FollowQuery
 
   def content
-    link "Follow someone", to: Follows::New
+    link "Follow someone", to: Follows::New, flow_id: "new-follow"
     list_follow_requests(@follow_requests)
-    list_followers(@followers)
+    list_followers(@followers, @following)
     list_following(@following)
   end
 
@@ -26,12 +26,19 @@ class Follows::IndexPage < MainLayout
     end
   end
 
-  private def list_followers(followers : FollowQuery)
+  private def list_followers(followers : FollowQuery, following : FollowQuery)
     section class: "followers" do
       h3 "Followers"
       ul do
         followers.each do |follow|
           li "#{follow.from.username}"
+          if !following.includes?(follow)
+            link(
+              "Follow back",
+              to: Users::Follows::Create.with(user_id: follow.from.id),
+              flow_id: "follow-back-#{follow.from.username}"
+            )
+          end
         end
       end
     end
