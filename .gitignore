@@ -4,7 +4,7 @@
 *.dwarf
 /node_modules
 yarn-error.log
-/bin/lucky/
+/bin/
 server
 *.dwarf
 *.local.cr

@@ -1,11 +1,11 @@
 require "../spec/support/boxes/**"
 
 class Db::CreateSampleSeeds < LuckyCli::Task
-  banner "Add sample database records helpful for development"
+  summary "Add sample database records helpful for development"
 
   def call
     edward = SignUpForm.create!(
-      LuckyRecord::Params.new(
+      Avram::Params.new(
         email: "edward@edwardloveall.com",
         username: "edwardloveall",
         password: "password",
@@ -13,7 +13,7 @@ class Db::CreateSampleSeeds < LuckyCli::Task
       )
     )
     magic = SignUpForm.create!(
-      LuckyRecord::Params.new(
+      Avram::Params.new(
         email: "magic@example.com",
         username: "magic",
         password: "password",
@@ -44,7 +44,7 @@ class Db::CreateSampleSeeds < LuckyCli::Task
       user_id: magic.id,
     )
 
-    params = LuckyRecord::Params.new(username: magic.username)
+    params = Avram::Params.new(username: magic.username)
     FollowRequestUsernameForm.create!(params, current_user: edward)
 
     puts "Done adding sample data"

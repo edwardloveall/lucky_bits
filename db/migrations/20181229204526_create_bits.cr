@@ -1,4 +1,4 @@
-class CreateBits::V20181229204526 < LuckyRecord::Migrator::Migration::V1
+class CreateBits::V20181229204526 < Avram::Migrator::Migration::V1
   def migrate
     create :bits do
       add title : String

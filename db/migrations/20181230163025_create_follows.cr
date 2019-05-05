@@ -1,4 +1,4 @@
-class CreateFollows::V20181230163025 < LuckyRecord::Migrator::Migration::V1
+class CreateFollows::V20181230163025 < Avram::Migrator::Migration::V1
   def migrate
     create :follows do
       add_belongs_to from : User, on_delete: :cascade

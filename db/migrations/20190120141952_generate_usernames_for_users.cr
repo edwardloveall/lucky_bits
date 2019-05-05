@@ -1,4 +1,4 @@
-class GenerateUsernamesForUsers::V20190120141952 < LuckyRecord::Migrator::Migration::V1
+class GenerateUsernamesForUsers::V20190120141952 < Avram::Migrator::Migration::V1
   class TempUser < BaseModel
     table :users do
       column email : String

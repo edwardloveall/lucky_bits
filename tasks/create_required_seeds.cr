@@ -1,7 +1,7 @@
 require "../spec/support/boxes/**"
 
 class Db::CreateRequiredSeeds < LuckyCli::Task
-  banner "Add database records required for the app to work"
+  summary "Add database records required for the app to work"
 
   def call
     # generate seeds here

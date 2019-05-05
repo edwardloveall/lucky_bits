@@ -1,4 +1,5 @@
 require "./dependencies"
+Lucky::AssetHelpers.load_manifest
 require "./models/base_model"
 require "./models/mixins/**"
 require "./models/user"
@@ -19,11 +20,11 @@ require "../config/env"
 require "../config/**"
 require "../db/migrations/**"
 
-class App
+class App < Lucky::BaseApp
   private getter server
 
-  def initialize
-    @server = HTTP::Server.new [
+  def middleware
+    [
       Lucky::HttpMethodOverrideHandler.new,
       Lucky::LogHandler.new,
       Lucky::SessionHandler.new,
@@ -33,26 +34,5 @@ class App
       Lucky::StaticFileHandler.new("./public", false),
       Lucky::RouteNotFoundHandler.new,
     ]
-  end
-
-  def base_uri
-    "http://#{host}:#{port}"
-  end
-
-  def host
-    Lucky::Server.settings.host
-  end
-
-  def port
-    Lucky::Server.settings.port
-  end
-
-  def listen
-    server.bind_tcp host, port
-    server.listen
-  end
-
-  def close
-    server.close
   end
 end

@@ -12,4 +12,4 @@ mix
   .setPublicPath("public")
   .version(["public/assets"])
   .webpackConfig({ stats: "errors-only" })
-  .disableSuccessNotifications();
+  .disableNotifications();

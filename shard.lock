@@ -2,7 +2,11 @@ version: 1.0
 shards:
   authentic:
     github: luckyframework/authentic
-    version: 0.2.0
+    version: 0.3.0
+
+  avram:
+    github: luckyframework/avram
+    version: 0.9.4
 
   blank:
     github: kostya/blank
@@ -28,29 +32,29 @@ shards:
     github: crystal-lang/crystal-db
     version: 0.5.1
 
+  dexter:
+    github: luckyframework/dexter
+    version: 0.1.1
+
   exception_page:
     github: crystal-loot/exception_page
-    version: 0.1.1
+    version: 0.1.2
 
   habitat:
     github: luckyframework/habitat
-    version: 0.4.0
+    version: 0.4.3
 
   lucky:
     github: luckyframework/lucky
-    version: 0.12.0
+    version: 0.14.0
 
   lucky_cli:
     github: luckyframework/lucky_cli
-    version: 0.12.0
+    version: 0.14.0
 
   lucky_flow:
     github: luckyframework/lucky_flow
     commit: 32bfe28835af631786252948d97f0aa3c0c62536
-
-  lucky_record:
-    github: luckyframework/lucky_record
-    commit: 6dfa3e2f801bf810cd4998ec36c9a53f51ab30c2
 
   lucky_router:
     github: luckyframework/lucky_router
@@ -62,7 +66,7 @@ shards:
 
   pg:
     github: will/crystal-pg
-    version: 0.15.0
+    version: 0.16.1
 
   selenium:
     github: ysbaddaden/selenium-webdriver-crystal

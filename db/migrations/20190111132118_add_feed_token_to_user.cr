@@ -1,4 +1,4 @@
-class AddFeedTokenToUser::V20190111132118 < LuckyRecord::Migrator::Migration::V1
+class AddFeedTokenToUser::V20190111132118 < Avram::Migrator::Migration::V1
   def migrate
     alter :users do
       add feed_token : String, fill_existing_with: "invalid-token"
