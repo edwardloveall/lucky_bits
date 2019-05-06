@@ -7,4 +7,8 @@ class BaseFlow < LuckyFlow
   def should_have_password_error
     el("body", text: "Password is wrong").should be_on_page
   end
+
+  def should_have_flash(text)
+    el("@flash", text: text).should be_on_page
+  end
 end

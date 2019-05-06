@@ -6,6 +6,7 @@ describe "Visit a user to follow them" do
     flow = UserFlow.new(user1)
     user2 = UserBox.create(&.email("user2@example.com").username("user2"))
 
+    flow.sign_in_user
     flow.visit_user_page(user2)
     flow.request_follow
 

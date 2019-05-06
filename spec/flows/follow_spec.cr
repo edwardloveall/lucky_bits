@@ -34,6 +34,6 @@ describe "User visits new follow page" do
     flow.visit_follows_page
     flow.follow_back(user: user1)
 
-    flow2.should_see_user_in_followers_list(user1)
+    flow.should_see_user_in_followers_list(user1)
   end
 end
