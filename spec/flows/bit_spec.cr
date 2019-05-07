@@ -5,6 +5,7 @@ describe "User visits bit homepage" do
     user = UserBox.create
     flow = BitFlow.new(user: user)
 
+    flow.sign_in
     flow.visit_bit_index
     flow.goto_new_bit_form
     flow.submit_new_bit

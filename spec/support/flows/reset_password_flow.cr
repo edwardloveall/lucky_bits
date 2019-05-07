@@ -1,7 +1,4 @@
 class ResetPasswordFlow < AuthenticatedBaseFlow
-  private getter user
-  delegate email, to: user
-
   def request_password_reset
     with_fake_token do
       visit PasswordResetRequests::New
@@ -32,5 +29,9 @@ class ResetPasswordFlow < AuthenticatedBaseFlow
     PasswordResetRequestEmail.temp_config(stubbed_token: "fake") do
       yield
     end
+  end
+
+  def sign_in(password : String)
+    sign_in(email: email, password: password)
   end
 end

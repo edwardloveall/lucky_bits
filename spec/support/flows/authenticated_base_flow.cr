@@ -1,10 +1,11 @@
 abstract class AuthenticatedBaseFlow < BaseFlow
-  getter user
+  private getter user
+  delegate email, to: user
 
   def initialize(@user : User)
   end
 
-  def sign_in(password : String)
+  def sign_in(email : String, password : String)
     visit SignIns::New
     fill_form SignInForm,
       email: email,
@@ -12,8 +13,8 @@ abstract class AuthenticatedBaseFlow < BaseFlow
     click "@sign-in-button"
   end
 
-  def sign_in_user
-    visit Me::Show, as: user
+  def sign_in(as this_user : User = @user)
+    visit Me::Show, as: this_user
   end
 
   def sign_out

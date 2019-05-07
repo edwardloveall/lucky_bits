@@ -1,9 +1,4 @@
 class FollowFlow < AuthenticatedBaseFlow
-  private getter user : User
-
-  def initialize(@user : User)
-  end
-
   def follow(user to_follow : User)
     fill_form(
       FollowRequestUsernameForm,

@@ -1,6 +1,6 @@
 class BitFlow < AuthenticatedBaseFlow
   def visit_bit_index
-    visit Bits::Index, as: user
+    visit Bits::Index
   end
 
   def goto_new_bit_form
