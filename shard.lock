@@ -54,7 +54,7 @@ shards:
 
   lucky_flow:
     github: luckyframework/lucky_flow
-    commit: 32bfe28835af631786252948d97f0aa3c0c62536
+    version: 0.4.0
 
   lucky_router:
     github: luckyframework/lucky_router
