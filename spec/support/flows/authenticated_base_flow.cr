@@ -1,9 +1,7 @@
 abstract class AuthenticatedBaseFlow < BaseFlow
-  def initialize(@user : User)
-  end
+  getter user
 
-  def user
-    @user
+  def initialize(@user : User)
   end
 
   def sign_in(password : String)
