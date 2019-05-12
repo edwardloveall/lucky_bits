@@ -16,7 +16,11 @@ class FollowFlow < AuthenticatedBaseFlow
     allow_link.click
   end
 
+  def should_have_requested_to_follow
+    el(".flash-success", text: "Your invite has been sent for approval!").should be_on_page
+  end
+
   def should_see_user_in_followers_list(user following : User)
-    el(".followers li", text: following.username)
+    el(".followers li", text: following.username).should be_on_page
   end
 end
