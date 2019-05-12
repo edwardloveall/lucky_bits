@@ -21,9 +21,22 @@ class Follows::IndexPage < MainLayout
             to: Follows::Update.with(follow.id),
             flow_id: "allow-follow-#{follow.from.username}"
           )
+          link(
+            "Deny",
+            to: Follows::Delete.with(follow.id),
+            flow_id: "deny-follow-#{follow.from.username}"
+          )
         end
       end
     end
+  end
+
+  def deny_follow_link(follow)
+    link(
+      "Deny",
+      to: Follows::Delete.with(follow.id),
+      flow_id: "deny-follow-#{follow.from.username}"
+    )
   end
 
   private def list_followers(followers : FollowQuery, following : FollowQuery)

@@ -38,4 +38,18 @@ describe "User visits new follow page" do
 
     flow.should_have_requested_to_follow
   end
+
+  it "can deny a follow request" do
+    user1 = UserBox.create(&.email("user1@example.com").username("user1"))
+    user2 = UserBox.create(&.email("user2@example.com").username("user2"))
+    follow = FollowBox.create(&.to_id(user2.id).from_id(user1.id))
+    flow = FollowFlow.new(user: user2)
+
+    flow.sign_in
+    flow.visit_follows_page
+    flow.deny_follow(user: user1)
+
+    flow.should_not_see_user_in_followers_list(user1)
+    flow.should_not_see_follow_request_from(user1)
+  end
 end
