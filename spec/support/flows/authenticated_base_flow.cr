@@ -18,8 +18,12 @@ abstract class AuthenticatedBaseFlow < BaseFlow
   end
 
   def sign_out
-    visit Me::Show
+    visit_my_page
     sign_out_button.click
+  end
+
+  def visit_my_page
+    visit Me::Show
   end
 
   def visit_follows_page

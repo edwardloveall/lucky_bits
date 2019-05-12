@@ -12,4 +12,19 @@ describe "User visits bit homepage" do
 
     flow.should_see_bit_on_page
   end
+
+  it "edits one of their bits" do
+    user = UserBox.create
+    flow = BitFlow.new(user: user)
+    bit = BitBox.create(&.user_id(user.id))
+
+    flow.sign_in
+    flow.visit_my_page
+    flow.click_on_edit_bit(bit)
+    flow.el("[name='bit:title']").clear
+    flow.fill_form(BitForm, title: "Edited Bit")
+    flow.submit_bit_form
+
+    flow.el("@bit-title", text: "Edited Bit").should be_on_page
+  end
 end

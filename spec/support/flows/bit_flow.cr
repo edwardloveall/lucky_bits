@@ -7,6 +7,14 @@ class BitFlow < AuthenticatedBaseFlow
     click "@new-bit-link"
   end
 
+  def click_on_edit_bit(bit : Bit)
+    click "@edit-bit-#{bit.id}"
+  end
+
+  def submit_bit_form
+    click "@bit-form-submit"
+  end
+
   def submit_new_bit
     fill_form(
       BitForm,
