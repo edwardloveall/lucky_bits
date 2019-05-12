@@ -24,11 +24,11 @@ class FollowFlow < AuthenticatedBaseFlow
     el(".flash-success", text: "Your invite has been sent for approval!").should be_on_page
   end
 
-  def should_see_user_in_followers_list(user following : User)
+  def should_see_follower(user following : User)
     el(".followers li", text: following.username).should be_on_page
   end
 
-  def should_not_see_user_in_followers_list(user following : User)
+  def should_not_see_follower(user following : User)
     el(".followers li", text: following.username).should_not be_on_page
   end
 

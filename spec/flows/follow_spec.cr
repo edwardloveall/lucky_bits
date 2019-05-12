@@ -17,7 +17,7 @@ describe "User visits new follow page" do
     flow2.visit_follows_page
     flow2.allow_user_to_follow(user: user1)
 
-    flow2.should_see_user_in_followers_list(user1)
+    flow2.should_see_follower(user1)
   end
 
   it "can follow back a user that they don't follow" do
@@ -32,7 +32,7 @@ describe "User visits new follow page" do
 
     flow.sign_in
     flow.visit_follows_page
-    flow.should_see_user_in_followers_list(user1)
+    flow.should_see_follower(user1)
 
     flow.follow_back(user: user1)
 
@@ -49,7 +49,7 @@ describe "User visits new follow page" do
     flow.visit_follows_page
     flow.deny_follow(user: user1)
 
-    flow.should_not_see_user_in_followers_list(user1)
+    flow.should_not_see_follower(user1)
     flow.should_not_see_follow_request_from(user1)
   end
 end
