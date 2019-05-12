@@ -16,19 +16,19 @@ class Follows::IndexPage < MainLayout
       ul do
         follow_requests.each do |follow|
           li "#{follow.from.username}"
-          link(
-            "Allow",
-            to: Follows::Update.with(follow.id),
-            flow_id: "allow-follow-#{follow.from.username}"
-          )
-          link(
-            "Deny",
-            to: Follows::Delete.with(follow.id),
-            flow_id: "deny-follow-#{follow.from.username}"
-          )
+          allow_follow_link(follow)
+          deny_follow_link(follow)
         end
       end
     end
+  end
+
+  def allow_follow_link(follow : Follow)
+    link(
+      "Allow",
+      to: Follows::Update.with(follow.id),
+      flow_id: "allow-follow-#{follow.from.username}"
+    )
   end
 
   def deny_follow_link(follow)
@@ -46,15 +46,19 @@ class Follows::IndexPage < MainLayout
         followers.each do |follow|
           li "#{follow.from.username}"
           if !following.includes?(follow)
-            link(
-              "Follow back",
-              to: Users::Follows::Create.with(user_id: follow.from.id),
-              flow_id: "follow-back-#{follow.from.username}"
-            )
+            follow_back_link(follow)
           end
         end
       end
     end
+  end
+
+  def follow_back_link(follow : Follow)
+    link(
+      "Follow back",
+      to: Users::Follows::Create.with(user_id: follow.from.id),
+      flow_id: "follow-back-#{follow.from.username}"
+    )
   end
 
   private def list_following(following : FollowQuery)
