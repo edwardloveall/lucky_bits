@@ -11,6 +11,10 @@ class BitFlow < AuthenticatedBaseFlow
     click "@edit-bit-#{bit.id}"
   end
 
+  def click_on_delete_bit(bit : Bit)
+    click "@delete-bit-#{bit.id}"
+  end
+
   def submit_bit_form
     click "@bit-form-submit"
   end

@@ -27,4 +27,17 @@ describe "User visits bit homepage" do
 
     flow.el("@bit-title", text: "Edited Bit").should be_on_page
   end
+
+  it "can not edit a different bit" do
+    user = UserBox.create
+    flow = BitFlow.new(user: user)
+    bit = BitBox.create(&.user_id(user.id))
+
+    flow.sign_in
+    flow.visit_my_page
+    flow.click_on_delete_bit(bit)
+    flow.visit_my_page
+
+    flow.el("@bit-title", text: "Edited Bit").should_not be_on_page
+  end
 end

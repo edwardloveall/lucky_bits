@@ -5,6 +5,7 @@ module Shared::BitList
         li class: "bit" do
           link bit.title, to: bit.url, flow_id: "bit-title"
           link "Edit", to: Bits::Edit.with(bit), flow_id: "edit-bit-#{bit.id}"
+          link "Delete", to: Bits::Delete.with(bit), flow_id: "delete-bit-#{bit.id}"
           para "from: #{bit.user.username}"
         end
       end
