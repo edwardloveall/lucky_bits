@@ -26,6 +26,10 @@ abstract class AuthenticatedBaseFlow < BaseFlow
     visit Me::Show
   end
 
+  def visit_bit_index_page
+    click "@main-follow-nav"
+  end
+
   def visit_follows_page
     click "@main-follow-nav"
   end
