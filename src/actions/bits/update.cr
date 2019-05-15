@@ -1,6 +1,6 @@
 class Bits::Update < BrowserAction
   route do
-    bit = BitQuery.find(params.get(:bit_id))
+    bit = BitQuery.find(bit_id)
     BitForm.update(bit, params) do |form, bit|
       if form.saved?
         flash.success = "Bit updated."
