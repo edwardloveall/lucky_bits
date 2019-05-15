@@ -27,7 +27,7 @@ abstract class AuthenticatedBaseFlow < BaseFlow
   end
 
   def visit_bit_index_page
-    click "@main-follow-nav"
+    click "@bits-index"
   end
 
   def visit_follows_page

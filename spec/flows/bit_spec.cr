@@ -33,12 +33,12 @@ describe "User visits bit homepage" do
     user2 = UserBox.create
     FollowBox.create(&.to_id(user2.id).from_id(user1.id).accepted_at(Time.now))
     flow = BitFlow.new(user: user1)
-    bit = BitBox.create(&.user_id(user2.id))
+    bit = BitBox.create(&.user_id(user2.id).title("Cool website!"))
 
     flow.sign_in
     flow.visit_bit_index
 
-    flow.el("@bit-title", text: bit.title).should be_on_page
+    flow.el("@bit-title", text: "Cool website!").should be_on_page
     flow.el("@edit-bit-#{bit.id}").should_not be_on_page
     flow.el("@delete-bit-#{bit.id}").should_not be_on_page
   end
