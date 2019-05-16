@@ -10,8 +10,10 @@ class SignUpForm < User::BaseForm
 
   def prepare
     validate_uniqueness_of email
-    username.value = username.value.try(&.downcase)
-    validate_uniqueness_of username, query: UserQuery.new.username.lower
+    validate_uniqueness_of(
+      downcased(username),
+      query: UserQuery.new.username.lower
+    )
     run_password_validations
     Authentic.copy_and_encrypt password, to: encrypted_password
     feed_token.value = generate_feed_token
@@ -19,5 +21,11 @@ class SignUpForm < User::BaseForm
 
   private def generate_feed_token
     Random::Secure.hex(16)
+  end
+
+  private def downcased(field : Avram::Field)
+    field.dup.tap do |downcased_field|
+      downcased_field.value = field.value.try(&.downcase)
+    end
   end
 end
