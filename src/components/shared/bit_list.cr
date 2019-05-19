@@ -8,7 +8,13 @@ module Shared::BitList
             link "Edit", to: Bits::Edit.with(bit), flow_id: "edit-bit-#{bit.id}"
             link "Delete", to: Bits::Delete.with(bit), flow_id: "delete-bit-#{bit.id}"
           end
-          para "from: #{bit.user.username}"
+          aside class: "meta" do
+            link bit.user.username, to: Users::Show.with(bit.user), class: "author"
+            span class: "timestamp" do
+              time_ago_in_words(bit.created_at)
+              text " ago"
+            end
+          end
         end
       end
     end
