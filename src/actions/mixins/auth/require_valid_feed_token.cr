@@ -9,7 +9,7 @@ module Auth::RequireValidFeedToken
     else
       text(
         "This is not a valid feed token",
-        status: Lucky::Action::Status::Unauthorized
+        status: HTTP::Status::UNAUTHORIZED
       )
     end
   end

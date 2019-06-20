@@ -5,7 +5,7 @@
 /node_modules
 yarn-error.log
 /bin/
-server
+start_server
 *.dwarf
 *.local.cr
 /public/js

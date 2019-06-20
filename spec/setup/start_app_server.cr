@@ -1,4 +1,4 @@
-app = App.new
+app = AppServer.new
 
 spawn do
   app.listen
