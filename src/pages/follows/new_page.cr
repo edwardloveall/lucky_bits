@@ -7,7 +7,7 @@ class Follows::NewPage < MainLayout
 
   private def render_follow_request_form(form)
     form_for Follows::Create do
-      field(form.username) { |field| text_input field }
+      field(form.username) { |field| text_input(field, autofocus: true) }
 
       submit "Request to follow", flow_id: "create-follow-request-form-submit"
     end
