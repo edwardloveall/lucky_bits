@@ -1,5 +1,5 @@
 class Me::Show < BrowserAction
   get "/me" do
-    render ShowPage, bits: BitQuery.from(current_user)
+    render ShowPage, form: PasswordResetForm.new
   end
 end

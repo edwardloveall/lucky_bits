@@ -18,7 +18,6 @@ abstract class AuthenticatedBaseFlow < BaseFlow
   end
 
   def sign_out
-    visit_my_page
     sign_out_button.click
   end
 
@@ -32,6 +31,10 @@ abstract class AuthenticatedBaseFlow < BaseFlow
 
   def visit_follows_page
     click "@main-follow-nav"
+  end
+
+  def visit_my_account
+    click "@nav-account"
   end
 
   def should_be_signed_in

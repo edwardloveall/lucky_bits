@@ -6,4 +6,11 @@ class UserFlow < AuthenticatedBaseFlow
   def request_follow
     click "@request-user-follow"
   end
+
+  def update_password(password : String)
+    fill_form PasswordResetForm,
+      password: password,
+      password_confirmation: password
+    click "@update-password-button"
+  end
 end
