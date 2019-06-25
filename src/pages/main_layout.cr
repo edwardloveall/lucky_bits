@@ -21,7 +21,7 @@ abstract class MainLayout
     nav flow_id: "main-nav" do
       ul do
         li { link "Home", to: Bits::Index, flow_id: "bits-index" }
-        li { link "My Bits", to: Me::Show }
+        li { link "My Bits", to: Users::Show.with(@current_user) }
         li { link "New Bit", to: Bits::New, flow_id: "new-bit-link" }
         li { link "Follow", to: Follows::Index, flow_id: "main-follow-nav" }
         li { link "Sign Out", to: SignIns::Delete, flow_id: "sign-out-button" }

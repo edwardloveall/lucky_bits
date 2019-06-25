@@ -1,4 +1,7 @@
 class Users::ShowPage < MainLayout
+  include Shared::BitList
+
+  needs bits : BitQuery
   needs user : User
   needs existing_follow_requests : FollowQuery
 
@@ -10,6 +13,7 @@ class Users::ShowPage < MainLayout
     else
       para "We're waiting on #{@user.username} to confirm your follow request."
     end
+    bit_list(@bits)
   end
 
   private def link_to_follow(user : User)

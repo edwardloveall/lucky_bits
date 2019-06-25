@@ -23,7 +23,7 @@ abstract class AuthenticatedBaseFlow < BaseFlow
   end
 
   def visit_my_page
-    visit Me::Show
+    visit Users::Show.with(user.id)
   end
 
   def visit_bit_index_page
