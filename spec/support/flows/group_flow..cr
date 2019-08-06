@@ -14,6 +14,11 @@ class GroupFlow < AuthenticatedBaseFlow
     click "@create-group"
   end
 
+  def add_user_to_group(user : User, group : Group)
+    fill_form(GroupInviteForm, username: user.username)
+    click "@create-membership"
+  end
+
   def should_see_group(title : String)
     el("@group-title", text: title).should be_on_page
   end
