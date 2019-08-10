@@ -4,9 +4,9 @@ class FollowQuery < Follow::BaseQuery
   end
 
   def follow_requests(for user : User)
-    preload_from.
-      where("accepted_at IS NULL").
-      to_id(user.id)
+    preload_from
+      .where("accepted_at IS NULL")
+      .to_id(user.id)
   end
 
   def self.followers(for user : User)
@@ -14,9 +14,9 @@ class FollowQuery < Follow::BaseQuery
   end
 
   def followers(for user : User)
-    preload_from.
-      where("accepted_at IS NOT NULL").
-      to_id(user.id)
+    preload_from
+      .where("accepted_at IS NOT NULL")
+      .to_id(user.id)
   end
 
   def self.following(for user : User)
@@ -24,9 +24,9 @@ class FollowQuery < Follow::BaseQuery
   end
 
   def following(for user : User)
-    preload_to.
-      where("accepted_at IS NOT NULL").
-      from_id(user.id)
+    preload_to
+      .where("accepted_at IS NOT NULL")
+      .from_id(user.id)
   end
 
   def empty?

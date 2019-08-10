@@ -1,12 +1,14 @@
-class SignUpForm < User::BaseForm
+class SignUpUser < User::SaveOperation
   # Change password validations in src/forms/mixins/password_validations.cr
   include PasswordValidations
 
-  fillable username
-  fillable email
-  fillable feed_token
-  virtual password : String
-  virtual password_confirmation : String
+  permit_columns username
+  permit_columns email
+  permit_columns feed_token
+  attribute password : String
+  attribute password_confirmation : String
+
+  before_save prepare
 
   def prepare
     validate_uniqueness_of email
@@ -23,7 +25,7 @@ class SignUpForm < User::BaseForm
     Random::Secure.hex(16)
   end
 
-  private def downcased(field : Avram::Field)
+  private def downcased(field : Avram::Attribute)
     field.dup.tap do |downcased_field|
       downcased_field.value = field.value.try(&.downcase)
     end

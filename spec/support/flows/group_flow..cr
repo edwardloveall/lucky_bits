@@ -10,12 +10,12 @@ class GroupFlow < AuthenticatedBaseFlow
 
   def create_new_group(title : String)
     click "@new-group"
-    fill_form(GroupForm, title: title)
+    fill_form(SaveGroup, title: title)
     click "@create-group"
   end
 
   def add_user_to_group(user : User, group : Group)
-    fill_form(GroupInviteForm, username: user.username)
+    fill_form(GroupInvite, username: user.username)
     click "@create-membership"
   end
 

@@ -1,6 +1,8 @@
-class FollowRequestUsernameForm < Follow::BaseForm
+class FollowRequestUsername < Follow::SaveOperation
   needs current_user : User
-  virtual username : String
+  attribute username : String
+
+  before_save prepare
 
   def prepare
     validate_required username

@@ -1,9 +1,11 @@
-class PasswordResetForm < User::BaseForm
+class ResetPassword < User::SaveOperation
   # Change password validations in src/forms/mixins/password_validations.cr
   include PasswordValidations
 
-  virtual password : String
-  virtual password_confirmation : String
+  attribute password : String
+  attribute password_confirmation : String
+
+  before_save prepare
 
   def prepare
     run_password_validations

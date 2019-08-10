@@ -8,7 +8,7 @@ class UserFlow < AuthenticatedBaseFlow
   end
 
   def update_password(password : String)
-    fill_form PasswordResetForm,
+    fill_form ResetPassword,
       password: password,
       password_confirmation: password
     click "@update-password-button"

@@ -9,7 +9,7 @@ class GenerateUsernamesForUsers::V20190120141952 < Avram::Migrator::Migration::V
   def migrate
     TempUser::BaseQuery.all.each do |user|
       new_username = user.email.split("@").first
-      TempUser::BaseForm.update!(user, username: new_username)
+      TempUser::SaveOperation.update!(user, username: new_username)
       puts "Generated username #{new_username} for #{user.email}"
     end
   end

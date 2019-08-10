@@ -2,14 +2,14 @@ class SignUps::Create < BrowserAction
   include Auth::RedirectIfSignedIn
 
   route do
-    SignUpForm.create(params) do |form, user|
+    SignUpUser.create(params) do |operation, user|
       if user
         flash.info = "Thanks for signing up"
         sign_in(user)
         redirect to: Bits::Index
       else
         flash.info = "Couldn't sign you up"
-        render NewPage, form: form
+        render NewPage, operation: operation
       end
     end
   end

@@ -1,9 +1,9 @@
 class SignUps::NewPage < GuestLayout
-  needs form : SignUpForm
+  needs operation : SignUpUser
 
   def content
     h1 "Sign Up"
-    render_sign_up_form(@form)
+    render_sign_up_form(@operation)
   end
 
   private def render_sign_up_form(f)

@@ -1,6 +1,6 @@
 class Groups::New < BrowserAction
   route do
-    form = GroupForm.new
-    render Groups::NewPage, group_form: form
+    operation = SaveGroup.new
+    render Groups::NewPage, save_group: operation
   end
 end

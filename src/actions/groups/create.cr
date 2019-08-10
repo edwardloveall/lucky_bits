@@ -1,12 +1,12 @@
 class Groups::Create < BrowserAction
   route do
-    GroupForm.create(params: params) do |form, group|
+    SaveGroup.create(params: params) do |operation, group|
       if group
         flash.success = "Group created!"
-        MembershipForm.create!(group_id: group.id, user_id: current_user.id)
+        SaveMembership.create!(group_id: group.id, user_id: current_user.id)
         redirect Groups::Index
       else
-        render Groups::NewPage, group_form: form
+        render Groups::NewPage, save_group: operation
       end
     end
   end

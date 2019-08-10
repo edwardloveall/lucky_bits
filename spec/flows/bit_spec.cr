@@ -22,7 +22,7 @@ describe "User visits bit homepage" do
     flow.visit_my_page
     flow.click_on_edit_bit(bit)
     flow.el("[name='bit:title']").clear
-    flow.fill_form(BitForm, title: "Edited Bit")
+    flow.fill_form(SaveBit, title: "Edited Bit")
     flow.submit_bit_form
 
     flow.el("@bit-title", text: "Edited Bit").should be_on_page

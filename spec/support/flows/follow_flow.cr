@@ -1,7 +1,7 @@
 class FollowFlow < AuthenticatedBaseFlow
   def follow(user to_follow : User)
     fill_form(
-      FollowRequestUsernameForm,
+      FollowRequestUsername,
       username: to_follow.username,
     )
     click "@create-follow-request-form-submit"

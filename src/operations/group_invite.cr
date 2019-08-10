@@ -1,5 +1,7 @@
-class GroupInviteForm < Membership::BaseForm
-  virtual username : String
+class GroupInvite < Membership::SaveOperation
+  attribute username : String
+
+  before_save prepare
 
   def prepare
     validate_required username

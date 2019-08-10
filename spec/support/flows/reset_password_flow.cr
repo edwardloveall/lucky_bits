@@ -2,7 +2,7 @@ class ResetPasswordFlow < AuthenticatedBaseFlow
   def request_password_reset
     with_fake_token do
       visit PasswordResetRequests::New
-      fill_form PasswordResetRequestForm,
+      fill_form ResetPasswordRequest,
         email: email
       click "@request-password-reset-button"
     end
@@ -19,7 +19,7 @@ class ResetPasswordFlow < AuthenticatedBaseFlow
     user = UserQuery.new.email(email).first
     token = Authentic.generate_password_reset_token(user)
     visit PasswordResets::New.with(user.id, token)
-    fill_form PasswordResetForm,
+    fill_form ResetPassword,
       password: password,
       password_confirmation: password
     click "@update-password-button"

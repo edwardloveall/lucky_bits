@@ -7,7 +7,7 @@ module Auth::RequireValidFeedToken
     if current_user?
       continue
     else
-      text(
+      plain_text(
         "This is not a valid feed token",
         status: HTTP::Status::UNAUTHORIZED
       )

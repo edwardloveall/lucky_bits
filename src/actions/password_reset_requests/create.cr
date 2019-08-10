@@ -2,13 +2,13 @@ class PasswordResetRequests::Create < BrowserAction
   include Auth::RedirectIfSignedIn
 
   route do
-    PasswordResetRequestForm.new(params).submit do |form, user|
+    ResetPasswordRequest.new(params).submit do |operation, user|
       if user
         PasswordResetRequestEmail.new(user).deliver
         flash.success = "You should receive an email on how to reset your password shortly"
         redirect SignIns::New
       else
-        render NewPage, form: form
+        render NewPage, reset_password_request: operation
       end
     end
   end

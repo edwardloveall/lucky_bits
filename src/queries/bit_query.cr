@@ -13,7 +13,9 @@ class BitQuery < Bit::BaseQuery
 
   def followed(by user : User)
     inner_join_follows
-    preload_user.follows(&.from_id(user.id).where("accepted_at IS NOT NULL"))
+    preload_user.where_follows(
+      FollowQuery.new.from_id(user.id).where("accepted_at IS NOT NULL")
+    )
   end
 
   def self.from(user : User)

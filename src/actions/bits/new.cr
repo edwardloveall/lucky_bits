@@ -1,5 +1,5 @@
 class Bits::New < BrowserAction
   route do
-    render Bits::NewPage, bit_form: BitForm.new
+    render Bits::NewPage, save_bit: SaveBit.new
   end
 end

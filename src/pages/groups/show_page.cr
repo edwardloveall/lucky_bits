@@ -1,6 +1,6 @@
 class Groups::ShowPage < MainLayout
   needs group : Group
-  needs group_invite_form : GroupInviteForm
+  needs group_invite : GroupInvite
 
   def content
     h2 "Members of #{@group.title}"
@@ -11,12 +11,12 @@ class Groups::ShowPage < MainLayout
     end
 
     h2 "Invite"
-    render_group_invite_form(@group_invite_form)
+    render_group_invite_form(@group_invite)
   end
 
-  private def render_group_invite_form(form : GroupInviteForm)
+  private def render_group_invite_form(op : GroupInvite)
     form_for Memberships::Create.with(group_id: @group.id) do
-      field(form.username) { |field| text_input(field) }
+      field(op.username) { |field| text_input(field) }
 
       submit "Invite", flow_id: "create-membership"
     end

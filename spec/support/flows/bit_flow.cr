@@ -21,7 +21,7 @@ class BitFlow < AuthenticatedBaseFlow
 
   def submit_new_bit
     fill_form(
-      BitForm,
+      SaveBit,
       title: "LinkyBits",
       url: "https://linkybits.net",
       description: "Maybe we could use this to share links?"

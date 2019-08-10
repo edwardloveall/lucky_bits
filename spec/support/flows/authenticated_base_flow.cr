@@ -7,7 +7,7 @@ abstract class AuthenticatedBaseFlow < BaseFlow
 
   def sign_in(email : String, password : String)
     visit SignIns::New
-    fill_form SignInForm,
+    fill_form SignInUser,
       email: email,
       password: password
     click "@sign-in-button"

@@ -1,5 +1,5 @@
-module FindAuthenticatable
-  private def find_authenticatable
+module UserFromEmail
+  private def user_from_email
     email.value.try do |value|
       UserQuery.new.email(value).first?
     end

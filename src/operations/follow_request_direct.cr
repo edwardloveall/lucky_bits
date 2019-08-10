@@ -1,6 +1,8 @@
-class FollowRequestDirectForm < Follow::BaseForm
+class FollowRequestDirect < Follow::SaveOperation
   needs current_user : User
   needs to_user : User
+
+  before_save prepare
 
   def prepare
     from_id.value = current_user.id

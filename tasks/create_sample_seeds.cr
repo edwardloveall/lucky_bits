@@ -4,7 +4,7 @@ class Db::CreateSampleSeeds < LuckyCli::Task
   summary "Add sample database records helpful for development"
 
   def call
-    edward = SignUpForm.create!(
+    edward = SignUpUser.create!(
       Avram::Params.new(
         email: "edward@edwardloveall.com",
         username: "edwardloveall",
@@ -12,7 +12,7 @@ class Db::CreateSampleSeeds < LuckyCli::Task
         password_confirmation: "password",
       )
     )
-    magic = SignUpForm.create!(
+    magic = SignUpUser.create!(
       Avram::Params.new(
         email: "magic@example.com",
         username: "magic",
@@ -21,23 +21,23 @@ class Db::CreateSampleSeeds < LuckyCli::Task
       )
     )
 
-    BitForm.create!(
+    SaveBit.create!(
       title: "KNOWER - 3",
       url: "https://www.youtube.com/watch?v=5WwSNBJpB0Y",
       user_id: edward.id,
     )
-    BitForm.create!(
+    SaveBit.create!(
       title: "Bad Kitty!",
       url: "https://i.imgur.com/FbuLHsf.gifv",
       user_id: edward.id,
     )
-    BitForm.create!(
+    SaveBit.create!(
       title: "Pixel Art Castle",
       url: "https://www.deviantart.com/fool/art/iso-castle-75849130",
       description: "This is some good inspiration",
       user_id: magic.id,
     )
-    BitForm.create!(
+    SaveBit.create!(
       title: "Lobsters",
       url: "https://lobste.rs",
       description: "Here's that link site I was talking about",
@@ -45,7 +45,7 @@ class Db::CreateSampleSeeds < LuckyCli::Task
     )
 
     params = Avram::Params.new(username: magic.username)
-    FollowRequestUsernameForm.create!(params, current_user: edward)
+    FollowRequestUsername.create!(params, current_user: edward)
 
     puts "Done adding sample data"
   end

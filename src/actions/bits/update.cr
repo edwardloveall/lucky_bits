@@ -1,13 +1,13 @@
 class Bits::Update < BrowserAction
   route do
     bit = BitQuery.find(bit_id)
-    BitForm.update(bit, params) do |form, bit|
-      if form.saved?
+    SaveBit.update(bit, params) do |operation, bit|
+      if operation.saved?
         flash.success = "Bit updated."
         redirect to: Users::Show.with(current_user)
       else
         flash.failure = "The bit couldn't be saved"
-        render EditPage, bit_form: form, bit: bit
+        render EditPage, save_bit: operation, bit: bit
       end
     end
   end

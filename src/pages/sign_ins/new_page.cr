@@ -1,9 +1,9 @@
 class SignIns::NewPage < GuestLayout
-  needs form : SignInForm
+  needs operation : SignInUser
 
   def content
     h1 "Sign In"
-    render_sign_in_form(@form)
+    render_sign_in_form(@operation)
   end
 
   private def render_sign_in_form(f)
