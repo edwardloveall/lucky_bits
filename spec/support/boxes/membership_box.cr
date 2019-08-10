@@ -1,0 +1,2 @@
+class MembershipBox < BaseBox
+end
