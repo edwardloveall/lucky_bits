@@ -5,5 +5,6 @@ class Bit < BaseModel
     column description : String?
     belongs_to user : User
     has_many follows : Follow, through: :users
+    belongs_to group : Group?
   end
 end

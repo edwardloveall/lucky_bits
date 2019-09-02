@@ -3,6 +3,7 @@ class Groups::ShowPage < MainLayout
   needs group_invite : GroupInvite
 
   def content
+    link "New Bit", to: Groups::Bits::New.with(@group), flow_id: "new-group-bit-link"
     h2 "Members of #{@group.title}"
     ul do
       @group.users.each do |user|

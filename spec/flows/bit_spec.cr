@@ -3,11 +3,14 @@ require "../spec_helper"
 describe "User visits bit homepage" do
   it "creates a bit" do
     user = UserBox.create
+    group = GroupBox.create(&.title("Fun Pod"))
+    MembershipBox.create(&.user_id(user.id).group_id(group.id))
     flow = BitFlow.new(user: user)
 
     flow.sign_in
-    flow.visit_bit_index
-    flow.goto_new_bit_form
+    flow.visit_group_index
+    flow.visit_group("Fun Pod")
+    flow.goto_group_new_bit_form
     flow.submit_new_bit
 
     flow.should_see_bit_on_page

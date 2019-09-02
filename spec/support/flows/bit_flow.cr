@@ -3,8 +3,20 @@ class BitFlow < AuthenticatedBaseFlow
     visit Bits::Index
   end
 
-  def goto_new_bit_form
+  def visit_group_index
+    visit Groups::Index
+  end
+
+  def visit_group(title)
+    el("@group-title", text: title).click
+  end
+
+  def goto_global_new_bit_form
     click "@new-bit-link"
+  end
+
+  def goto_group_new_bit_form
+    click "@new-group-bit-link"
   end
 
   def click_on_edit_bit(bit : Bit)
