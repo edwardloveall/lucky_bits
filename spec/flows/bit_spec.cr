@@ -18,13 +18,15 @@ describe "User visits bit homepage" do
 
   it "edits one of their bits" do
     user = UserBox.create
+    group = GroupBox.create(&.title("Fun Pod"))
+    MembershipBox.create(&.user_id(user.id).group_id(group.id))
     flow = BitFlow.new(user: user)
-    bit = BitBox.create(&.user_id(user.id))
+    bit = BitBox.create(&.user_id(user.id).group_id(group.id))
 
     flow.sign_in
-    flow.visit_my_page
+    flow.visit_group_index
+    flow.visit_group("Fun Pod")
     flow.click_on_edit_bit(bit)
-    flow.el("[name='bit:title']").clear
     flow.fill_form(SaveBit, title: "Edited Bit")
     flow.submit_bit_form
 
@@ -34,12 +36,17 @@ describe "User visits bit homepage" do
   it "can't edit a different bit" do
     user1 = UserBox.create
     user2 = UserBox.create
-    FollowBox.create(&.to_id(user2.id).from_id(user1.id).accepted_at(Time.now))
+    group = GroupBox.create(&.title("Fun Pod"))
+    MembershipBox.create(&.user_id(user1.id).group_id(group.id))
+    MembershipBox.create(&.user_id(user2.id).group_id(group.id))
     flow = BitFlow.new(user: user1)
-    bit = BitBox.create(&.user_id(user2.id).title("Cool website!"))
+    bit = BitBox.create(&.user_id(user2.id)
+      .title("Cool website!")
+      .group_id(group.id))
 
     flow.sign_in
-    flow.visit_bit_index
+    flow.visit_group_index
+    flow.visit_group("Fun Pod")
 
     flow.el("@bit-title", text: "Cool website!").should be_on_page
     flow.el("@edit-bit-#{bit.id}").should_not be_on_page
@@ -48,11 +55,14 @@ describe "User visits bit homepage" do
 
   it "can delete a bit" do
     user = UserBox.create
+    group = GroupBox.create(&.title("Fun Pod"))
+    MembershipBox.create(&.user_id(user.id).group_id(group.id))
     flow = BitFlow.new(user: user)
-    bit = BitBox.create(&.user_id(user.id))
+    bit = BitBox.create(&.user_id(user.id).group_id(group.id))
 
     flow.sign_in
-    flow.visit_my_page
+    flow.visit_group_index
+    flow.visit_group("Fun Pod")
     flow.click_on_delete_bit(bit)
     flow.visit_my_page
 

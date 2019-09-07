@@ -25,4 +25,12 @@ class BitQuery < Bit::BaseQuery
   def from(user : User)
     preload_user.user_id(user.id)
   end
+
+  def self.for_group(group : Group)
+    new.for_group(group)
+  end
+
+  def for_group(group : Group)
+    preload_user.group_id(group.id).recently_created
+  end
 end

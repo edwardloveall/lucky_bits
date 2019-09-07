@@ -8,7 +8,12 @@ class Memberships::Create < BrowserAction
         redirect Groups::Show.with(group_id)
       else
         group = GroupQuery.new.preload_users.find(1)
-        render Groups::ShowPage, group: group, group_invite: operation
+        render(
+          Groups::ShowPage,
+          group: group,
+          group_invite: operation,
+          group_bits: BitQuery.for_group(group),
+        )
       end
     end
   end
