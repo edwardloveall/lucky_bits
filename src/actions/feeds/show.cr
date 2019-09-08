@@ -2,8 +2,8 @@ class Feeds::Show < FeedAction
   include AtomResponseHelper
 
   get "/feed" do
-    bits = BitQuery.followed(current_user).preload_user.created_at.desc_order
-    latest_bit = BitQuery.followed(current_user).updated_at.desc_order.first
+    bits = BitQuery.for(current_user)
+    latest_bit = bits.first
     atom(
       feed do |xml|
         xml.element("title") { xml.text "LinkyBits" }

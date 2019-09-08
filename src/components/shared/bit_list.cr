@@ -14,7 +14,7 @@ module Shared::BitList
           aside class: "meta" do
             link bit.user.username, to: Users::Show.with(bit.user), class: "author"
             span class: "timestamp" do
-              time_ago_in_words(bit.created_at)
+              text time_ago_in_words(bit.created_at)
               text " ago"
             end
           end

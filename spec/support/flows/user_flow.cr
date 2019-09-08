@@ -3,10 +3,6 @@ class UserFlow < AuthenticatedBaseFlow
     visit Users::Show.with(user.id)
   end
 
-  def request_follow
-    click "@request-user-follow"
-  end
-
   def update_password(password : String)
     fill_form ResetPassword,
       password: password,
