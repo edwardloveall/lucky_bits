@@ -6,7 +6,7 @@ class SignIns::Create < BrowserAction
       if authenticated_user
         sign_in(authenticated_user)
         flash.success = "You're now signed in"
-        Authentic.redirect_to_originally_requested_path(self, fallback: Bits::Index)
+        Authentic.redirect_to_originally_requested_path(self, fallback: Me::Show)
       else
         flash.failure = "Sign in failed"
         render NewPage, operation: operation

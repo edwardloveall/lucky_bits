@@ -3,7 +3,7 @@ class Home::Index < BrowserAction
 
   get "/" do
     if current_user?
-      redirect Bits::Index
+      redirect Me::Show
     else
       render Home::IndexPage
     end

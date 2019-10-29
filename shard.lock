@@ -6,7 +6,7 @@ shards:
 
   avram:
     github: luckyframework/avram
-    version: 0.11.1
+    version: 0.11.2
 
   blank:
     github: kostya/blank
@@ -46,7 +46,7 @@ shards:
 
   lucky_flow:
     github: luckyframework/lucky_flow
-    version: 0.5.0
+    version: 0.6.0
 
   lucky_router:
     github: luckyframework/lucky_router
@@ -58,7 +58,7 @@ shards:
 
   selenium:
     github: ysbaddaden/selenium-webdriver-crystal
-    commit: a6d0e63ab7ddc6a20923bf4157bc6247c1fa2acc
+    commit: bda2fd406c1a118251c5a2883f1e1f3af242116e
 
   shell-table:
     github: luckyframework/shell-table.cr

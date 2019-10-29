@@ -46,12 +46,14 @@ class Feeds::Show < FeedAction
         type: "text/html",
         href: bit.url
       )
-      xml.element(
-        "link",
-        rel: "related",
-        type: "text/html",
-        href: Bits::Index.url
-      )
+      if group = bit.group
+        xml.element(
+          "link",
+          rel: "related",
+          type: "text/html",
+          href: Groups::Show.with(group).url
+        )
+      end
       xml.element("published") { xml.text bit.created_at.to_rfc3339 }
       xml.element("updated") { xml.text bit.updated_at.to_rfc3339 }
       xml.element("author") do
