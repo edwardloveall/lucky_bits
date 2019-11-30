@@ -18,7 +18,7 @@ class Errors::Show < Lucky::ErrorAction
     end
   end
 
-  def handle_error(error : Exception)
+  def handle_error(error : Exception) : Lucky::Response
     error.inspect_with_backtrace(STDERR)
 
     message = "An unexpected error occurred"

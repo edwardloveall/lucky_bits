@@ -12,7 +12,7 @@ class User < BaseModel
     has_many groups : Group, through: :memberships
   end
 
-  def emailable
+  def emailable : Carbon::Address
     Carbon::Address.new(email)
   end
 end

@@ -1,7 +1,7 @@
 class AppServer < Lucky::BaseAppServer
   private getter server
 
-  def middleware
+  def middleware : Array(HTTP::Handler)
     [
       Lucky::HttpMethodOverrideHandler.new,
       Lucky::LogHandler.new,
@@ -11,6 +11,6 @@ class AppServer < Lucky::BaseAppServer
       Lucky::RouteHandler.new,
       Lucky::StaticFileHandler.new("./public", false),
       Lucky::RouteNotFoundHandler.new,
-    ]
+    ] of HTTP::Handler
   end
 end
