@@ -1,0 +1,8 @@
+.skip-to-main {
+  @include hide-visually;
+
+  &:active,
+  &:focus {
+    @include hide-visually("unhide");
+  }
+}

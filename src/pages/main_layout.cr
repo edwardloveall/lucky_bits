@@ -10,9 +10,12 @@ abstract class MainLayout
       shared_layout_head
 
       body do
+        skip_to_content_link
         render_flash
         render_signed_in_user
-        content
+        main id: "main-content" do
+          content
+        end
       end
     end
   end
@@ -27,5 +30,9 @@ abstract class MainLayout
         li { link "Sign Out", to: SignIns::Delete, flow_id: "sign-out-button" }
       end
     end
+  end
+
+  private def skip_to_content_link
+    link "Skip to content", to: "#main-content", class: "skip-to-main"
   end
 end

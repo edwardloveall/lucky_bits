@@ -1,0 +1,75 @@
+// Bourbon settings
+$bourbon: (
+  "global-font-file-formats": (
+    "woff2",
+    "woff",
+  ),
+);
+
+// Directories
+$dir-font: "/assets/fonts/";
+$dir-image: "/assets/images/";
+
+// Breakpoints
+$breakpoints: (
+  x-small: 25em,
+  small: 40em,
+  medium: 55em,
+  large: 65em,
+);
+
+// Font stacks
+$font-family-base: $font-stack-georgia;
+$font-family-sans: $font-stack-system;
+
+// Font weights
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+// Line heights
+$line-height-base: 1.5;
+$line-height-tight: 1;
+
+// Font sizes
+$font-size-global: 16px;
+$font-size-xx-small: rem(10px);
+$font-size-x-small: rem(12px);
+$font-size-small: rem(14px);
+$font-size-base: rem($font-size-global);
+$font-size-base-plus: rem(20px);
+$font-size-medium: rem(28px);
+$font-size-large: rem(36px);
+$font-size-x-large: rem(48px);
+
+// Spacing
+$spacing-base: 1rem;
+$spacing-x-small: $spacing-base / 4;
+$spacing-small: $spacing-base / 2;
+$spacing-medium: $spacing-base * 1.5;
+$spacing-large: $spacing-base * 2;
+$spacing-x-large: $spacing-base * 4;
+
+// Colors
+$color-offblack: #333;
+$color-gray: #5c5c5c;
+$color-offwhite: #fdfdfc;
+$color-text: $color-offblack;
+
+// Borders
+$border-radius-base: 3px;
+$border-radius-circle: 50%;
+
+// Transitions
+$transition-base: 0.2s ease-in-out all;
+
+// Z-Index
+$z-index: (
+  basement: -999999,
+  layout: 1000,
+  object: 2000,
+  component: 3000,
+  subcomponent: 3010,
+  modal: 4000,
+  submodal: 4010,
+  ceiling: 999999,
+);

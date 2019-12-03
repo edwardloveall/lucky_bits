@@ -1,0 +1,16 @@
+figure,
+img,
+picture,
+video {
+  display: block;
+  margin: 0;
+  width: 100%;
+}
+
+svg {
+  display: block;
+
+  @media screen and (-ms-high-contrast: active) {
+    fill: windowText;
+  }
+}

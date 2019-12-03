@@ -1,16 +1,17 @@
 {
   "license": "UNLICENSED",
   "private": true,
-  "dependencies": {
-    "jquery": "^3.2.1",
-    "normalize-scss": "^7.0.1",
-    "rails-ujs": "^5.1.4"
-  },
   "scripts": {
     "heroku-postbuild": "yarn prod",
     "dev": "yarn run webpack --progress --hide-modules --color --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "yarn run webpack --watch --progress --hide-modules --color --config=node_modules/laravel-mix/setup/webpack.config.js",
     "prod": "NODE_ENV=production yarn run webpack --progress --hide-modules --color --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "dependencies": {
+    "bourbon": "^6.0.0",
+    "jquery": "^3.2.1",
+    "normalize-scss": "^7.0.1",
+    "rails-ujs": "^5.1.4"
   },
   "devDependencies": {
     "browser-sync": "^2.18.13",
