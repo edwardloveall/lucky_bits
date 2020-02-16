@@ -4,6 +4,6 @@ class Groups::Index < BrowserAction
       .join_users
       .where_users(UserQuery.new.id(current_user.id))
 
-    render Groups::IndexPage, groups: groups
+    html Groups::IndexPage, groups: groups
   end
 end

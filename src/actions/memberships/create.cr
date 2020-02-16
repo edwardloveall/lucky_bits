@@ -8,7 +8,7 @@ class Memberships::Create < BrowserAction
         redirect Groups::Show.with(group_id)
       else
         group = GroupQuery.new.preload_users.find(1)
-        render(
+        html(
           Groups::ShowPage,
           group: group,
           group_invite: operation,

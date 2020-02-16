@@ -7,7 +7,7 @@ class Bits::Update < BrowserAction
         redirect to: Users::Show.with(current_user)
       else
         flash.failure = "The bit couldn't be saved"
-        render EditPage, save_bit: operation, bit: bit
+        html EditPage, save_bit: operation, bit: bit
       end
     end
   end

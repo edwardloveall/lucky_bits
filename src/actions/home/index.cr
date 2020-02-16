@@ -5,7 +5,7 @@ class Home::Index < BrowserAction
     if current_user?
       redirect Me::Show
     else
-      render Home::IndexPage
+      html Home::IndexPage
     end
   end
 end

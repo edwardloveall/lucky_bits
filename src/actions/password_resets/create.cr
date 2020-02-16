@@ -10,7 +10,7 @@ class PasswordResets::Create < BrowserAction
         flash.success = "Your password has been reset"
         redirect to: Home::Index
       else
-        render NewPage, reset_password: operation, user_id: user_id.to_i
+        html NewPage, reset_password: operation, user_id: user_id.to_i
       end
     end
   end

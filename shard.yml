@@ -8,18 +8,18 @@ targets:
   linkybits:
     main: src/linkybits.cr
 
-crystal: 0.31.1
+crystal: 0.33.0
 
 dependencies:
   lucky:
     github: luckyframework/lucky
-    version: ~> 0.17.0
+    version: ~> 0.18.1
   avram:
     github: luckyframework/avram
-    version: ~> 0.11.1
+    version: ~> 0.12.1
   authentic:
     github: luckyframework/authentic
-    version: ~> 0.4.0
+    version: ~> 0.5.1
   carbon:
     github: luckyframework/carbon
     version: ~> 0.1.1

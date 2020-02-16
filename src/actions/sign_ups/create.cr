@@ -9,7 +9,7 @@ class SignUps::Create < BrowserAction
         redirect to: Me::Show
       else
         flash.info = "Couldn't sign you up"
-        render NewPage, operation: operation
+        html NewPage, operation: operation
       end
     end
   end

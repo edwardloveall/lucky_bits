@@ -1,5 +1,6 @@
 class Feeds::Show < FeedAction
   include AtomResponseHelper
+  accepted_formats [:xml]
 
   get "/feed" do
     bits = BitQuery.for(current_user)

@@ -7,7 +7,7 @@ class Users::UpdatePassword < BrowserAction
         flash.success = "Your password has been updated"
         redirect to: Me::Show
       else
-        render Me::ShowPage, reset_password: operation
+        html Me::ShowPage, reset_password: operation
       end
     end
   end

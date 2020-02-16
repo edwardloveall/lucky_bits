@@ -1,5 +1,5 @@
 class Me::Show < BrowserAction
   get "/me" do
-    render ShowPage, reset_password: ResetPassword.new
+    html ShowPage, reset_password: ResetPassword.new
   end
 end
