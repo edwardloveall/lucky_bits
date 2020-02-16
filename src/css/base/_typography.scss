@@ -1,6 +1,17 @@
+$highlight-offset-v: -0.3em;
+$highlight-offset-h: -0.3ex;
+
+html {
+  font-size: $font-size-global;
+}
+
 body {
   color: $color-text;
-  font-family: $font-stack-system;
-  font-size: $font-size-base-plus;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
   line-height: $line-height-base;
+}
+
+a {
+  color: $color-text;
 }

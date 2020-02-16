@@ -31,15 +31,15 @@ $line-height-base: 1.5;
 $line-height-tight: 1;
 
 // Font sizes
-$font-size-global: 16px;
-$font-size-xx-small: rem(10px);
-$font-size-x-small: rem(12px);
-$font-size-small: rem(14px);
+$font-size-global: 20px;
+$font-size-xx-small: rem(12px);
+$font-size-x-small: rem(14px);
+$font-size-small: rem(16px);
 $font-size-base: rem($font-size-global);
-$font-size-base-plus: rem(20px);
-$font-size-medium: rem(28px);
-$font-size-large: rem(36px);
-$font-size-x-large: rem(48px);
+$font-size-base-plus: rem(28px);
+$font-size-medium: rem(36px);
+$font-size-large: rem(48px);
+$font-size-x-large: rem(64px);
 
 // Spacing
 $spacing-base: 1rem;
@@ -53,7 +53,16 @@ $spacing-x-large: $spacing-base * 4;
 $color-offblack: #333;
 $color-gray: #5c5c5c;
 $color-offwhite: #fdfdfc;
+$color-light-tan: #faf3e6;
+$color-orange: #eca347;
+$color-teal: #afc5b7;
+
+// Color use
+
+$color-base: $color-light-tan;
 $color-text: $color-offblack;
+$color-highlight: $color-orange;
+$color-secondary-highlight: $color-teal;
 
 // Borders
 $border-radius-base: 3px;
@@ -64,12 +73,12 @@ $transition-base: 0.2s ease-in-out all;
 
 // Z-Index
 $z-index: (
-  basement: -999999,
-  layout: 1000,
-  object: 2000,
-  component: 3000,
-  subcomponent: 3010,
-  modal: 4000,
-  submodal: 4010,
-  ceiling: 999999,
+  basement: 0,
+  layout: 1,
+  object: 2,
+  component: 3,
+  subcomponent: 4,
+  modal: 5,
+  submodal: 6,
+  ceiling: 7,
 );

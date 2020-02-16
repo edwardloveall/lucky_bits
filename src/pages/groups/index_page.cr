@@ -6,7 +6,7 @@ class Groups::IndexPage < MainLayout
     h2 "Your Groups"
     ul do
       @groups.each do |group|
-        li do
+        li class: "group" do
           link group.title, to: Groups::Show.with(group), flow_id: "group-title"
         end
       end

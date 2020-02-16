@@ -2,3 +2,11 @@ button,
 select {
   cursor: pointer;
 }
+
+label {
+  display: block;
+}
+
+#{$all-text-inputs} {
+  margin-bottom: $spacing-base;
+}

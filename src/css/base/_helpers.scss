@@ -27,3 +27,9 @@
   display: $display;
   justify-content: $justify;
 }
+
+@mixin link-highlight($color: $color-highlight) {
+  background-color: $color;
+  box-shadow: $highlight-offset-v $highlight-offset-h 0 $color,
+    inset $highlight-offset-v $highlight-offset-h 0 $color-base;
+}

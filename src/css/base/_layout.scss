@@ -1,1 +1,10 @@
+body {
+  background-color: $color-base;
+  padding: $spacing-base;
+}
 
+main {
+  margin-top: $spacing-large;
+  max-width: map-get($breakpoints, large);
+  width: 90%;
+}

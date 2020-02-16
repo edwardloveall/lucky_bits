@@ -1,0 +1,18 @@
+.bit {
+  margin-bottom: $spacing-x-large;
+
+  .title {
+    @include link-highlight;
+    display: inline-block;
+    font-size: $font-size-base-plus;
+    margin-bottom: $spacing-small;
+  }
+
+  .meta .timestamp {
+    margin-left: $spacing-small;
+  }
+
+  .actions a {
+    margin-right: $spacing-small;
+  }
+}

@@ -1,0 +1,17 @@
+ul {
+  margin-top: 0;
+  padding: 0;
+
+  li {
+    display: block;
+    list-style-type: none;
+    margin-bottom: $spacing-x-small;
+  }
+
+  @include breakpoint("small") {
+    li {
+      display: inline;
+      margin-right: $spacing-base;
+    }
+  }
+}

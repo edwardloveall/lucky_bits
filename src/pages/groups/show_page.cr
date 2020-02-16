@@ -6,8 +6,9 @@ class Groups::ShowPage < MainLayout
   needs group_bits : BitQuery
 
   def content
+    h2 @group.title
     link "New Bit", to: Groups::Bits::New.with(@group), flow_id: "new-group-bit-link"
-    h2 "Members of #{@group.title}"
+    h2 "Members"
     ul do
       @group.users.each do |user|
         li user.username, flow_id: "user-username"

@@ -1,0 +1,7 @@
+.group {
+  display: block;
+
+  a {
+    @include link-highlight($color-secondary-highlight);
+  }
+}

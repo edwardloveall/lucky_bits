@@ -2,6 +2,7 @@ class Groups::NewPage < MainLayout
   needs save_group : SaveGroup
 
   def content
+    h2 "Create Group"
     render_group_form(@save_group)
   end
 
