@@ -7,19 +7,28 @@ class Groups::ShowPage < MainLayout
 
   def content
     h2 @group.title
-    link "New Bit", to: Groups::Bits::New.with(@group), flow_id: "new-group-bit-link"
-    h2 "Members"
-    ul do
-      @group.users.each do |user|
-        li user.username, flow_id: "user-username"
+    section class: "new-bit-section" do
+      link "New Bit", to: Groups::Bits::New.with(@group), flow_id: "new-group-bit-link"
+    end
+
+    section class: "group-members-section" do
+      h2 "Members"
+      ul do
+        @group.users.each do |user|
+          li user.username, flow_id: "user-username"
+        end
       end
     end
 
-    h2 "Invite"
-    render_group_invite_form(@group_invite)
+    section class: "group-invite-section" do
+      h2 "Invite"
+      render_group_invite_form(@group_invite)
+    end
 
-    h2 "Bits"
-    bit_list(@group_bits)
+    section class: "group-bits-section" do
+      h2 "Bits"
+      bit_list(@group_bits)
+    end
   end
 
   private def render_group_invite_form(op : GroupInvite)

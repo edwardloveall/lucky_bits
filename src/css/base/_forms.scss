@@ -1,12 +1,29 @@
 button,
+input[type="submit"],
 select {
   cursor: pointer;
+  font-family: $font-family-base;
 }
 
 label {
+  font-weight: $font-weight-bold;
   display: block;
 }
 
 #{$all-text-inputs} {
+  border: 1px solid $color-black;
+  font-family: $font-family-base;
   margin-bottom: $spacing-base;
+}
+
+button,
+input[type="submit"] {
+  background-color: white;
+  border: 1px solid $color-black;
+  box-shadow: 0.2em 0.3ex 0 $color-black;
+  font-weight: $font-weight-bold;
+
+  &:hover {
+    background-color: $color-highlight;
+  }
 }

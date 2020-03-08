@@ -10,7 +10,7 @@ class Groups::Bits::NewPage < MainLayout
     form_for Groups::Bits::Create.with(@group.id) do
       field(op.title) { |f| text_input f }
       field(op.url) { |f| text_input f }
-      field(op.description) { |f| text_input f }
+      field(op.description) { |f| textarea f }
 
       div class: "action" do
         submit "Create Bit", flow_id: "create-bit-form-submit"

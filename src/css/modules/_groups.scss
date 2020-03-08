@@ -1,7 +1,28 @@
 .group {
   display: block;
+}
+
+.new-bit-section {
+  @include section;
 
   a {
-    @include link-highlight($color-secondary-highlight);
+    @include link-highlight(
+      $color-highlight,
+      $color-link,
+      $color-highlight,
+      $color-link
+    );
   }
+}
+
+.group-members-section {
+  @include section;
+}
+
+.group-invite-section {
+  @include section;
+}
+
+.group-bits-section {
+  @include section;
 }

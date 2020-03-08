@@ -1,3 +1,6 @@
+$highlight-offset-v: -0.3em;
+$highlight-offset-h: -0.3ex;
+
 @function rem($pixels, $context: $font-size-global) {
   @if (unitless($pixels)) {
     $pixels: $pixels * 1px;
@@ -28,8 +31,37 @@
   justify-content: $justify;
 }
 
-@mixin link-highlight($color: $color-highlight) {
-  background-color: $color;
-  box-shadow: $highlight-offset-v $highlight-offset-h 0 $color,
-    inset $highlight-offset-v $highlight-offset-h 0 $color-base;
+@mixin link-highlight(
+  $hover-bg: $color-highlight,
+  $visited-color: $color-visited,
+  $visited-hover-bg: $color-visited,
+  $visited-hover-color: $color-white
+) {
+  color: $color-link;
+
+  &:hover {
+    background-color: $hover-bg;
+  }
+
+  &:visited {
+    color: $visited-color;
+  }
+
+  &:hover:visited {
+    background-color: $visited-hover-bg;
+    color: $visited-hover-color;
+  }
+}
+
+@mixin section-highlight($color: $color-highlight) {
+  border-left: 2px solid $color-text;
+}
+
+@mixin section-padding {
+  padding-left: $spacing-base;
+}
+
+@mixin section {
+  @include section-highlight;
+  @include section-padding;
 }

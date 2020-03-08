@@ -1,6 +1,3 @@
-$highlight-offset-v: -0.3em;
-$highlight-offset-h: -0.3ex;
-
 html {
   font-size: $font-size-global;
 }
@@ -13,5 +10,14 @@ body {
 }
 
 a {
-  color: $color-text;
+  @include link-highlight;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $font-weight-bold;
 }

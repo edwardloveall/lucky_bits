@@ -1,0 +1,10 @@
+nav {
+  a {
+    @include link-highlight(
+      $color-highlight,
+      $color-link,
+      $color-highlight,
+      $color-link
+    );
+  }
+}

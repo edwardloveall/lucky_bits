@@ -19,7 +19,7 @@ $breakpoints: (
 );
 
 // Font stacks
-$font-family-base: $font-stack-georgia;
+$font-family-base: $font-stack-courier-new;
 $font-family-sans: $font-stack-system;
 
 // Font weights
@@ -50,23 +50,32 @@ $spacing-large: $spacing-base * 2;
 $spacing-x-large: $spacing-base * 4;
 
 // Colors
+$color-black: #000;
+$color-white: #fff;
 $color-offblack: #333;
 $color-gray: #5c5c5c;
 $color-offwhite: #fdfdfc;
 $color-light-tan: #faf3e6;
 $color-orange: #eca347;
 $color-teal: #afc5b7;
+$color-red: rgb(236, 104, 104);
+$color-yellow: hsl(60, 100, 80);
+$color-purple: hsl(270, 100, 60);
 
 // Color use
 
-$color-base: $color-light-tan;
-$color-text: $color-offblack;
-$color-highlight: $color-orange;
-$color-secondary-highlight: $color-teal;
+$color-base: $color-white;
+$color-text: $color-black;
+$color-text-alt: $color-gray;
+$color-highlight: $color-yellow;
+$color-secondary-highlight: $color-purple;
+$color-link: $color-text;
+$color-visited: $color-purple;
 
 // Borders
 $border-radius-base: 3px;
 $border-radius-circle: 50%;
+$border-width-thick: 10px;
 
 // Transitions
 $transition-base: 0.2s ease-in-out all;

@@ -2,7 +2,6 @@
   margin-bottom: $spacing-x-large;
 
   .title {
-    @include link-highlight;
     display: inline-block;
     font-size: $font-size-base-plus;
     margin-bottom: $spacing-small;
@@ -13,6 +12,12 @@
   }
 
   .actions a {
+    @include link-highlight(
+      $color-highlight,
+      $color-link,
+      $color-highlight,
+      $color-link
+    );
     margin-right: $spacing-small;
   }
 }
