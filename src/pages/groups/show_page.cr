@@ -1,15 +1,10 @@
 class Groups::ShowPage < MainLayout
-  include Shared::BitList
-
   needs group : Group
   needs group_invite : GroupInvite
-  needs group_bits : BitQuery
 
   def content
     h2 @group.title
-    section class: "new-bit-section" do
-      link "New Bit", to: Groups::Bits::New.with(@group), flow_id: "new-group-bit-link"
-    end
+    mount Groups::SharedNav.new(@group)
 
     section class: "group-members-section" do
       h2 "Members"
@@ -23,11 +18,6 @@ class Groups::ShowPage < MainLayout
     section class: "group-invite-section" do
       h2 "Invite"
       render_group_invite_form(@group_invite)
-    end
-
-    section class: "group-bits-section" do
-      h2 "Bits"
-      bit_list(@group_bits)
     end
   end
 

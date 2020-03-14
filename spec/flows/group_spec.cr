@@ -24,6 +24,7 @@ describe "User visits a group they are a part of" do
 
     flow.sign_in
     flow.visit_group(group.title)
+    flow.visit_group_info(group)
 
     flow.should_see_username(user1.username)
     flow.should_see_username(user2.username)
@@ -40,8 +41,8 @@ describe "User invites someone to a group" do
 
     flow.sign_in
     flow.visit_group(group.title)
+    flow.visit_group_info(group)
     flow.add_user_to_group(user: user2, group: group)
-    flow.visit_group(group.title)
 
     flow.should_see_username(user2.username)
   end

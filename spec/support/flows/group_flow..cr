@@ -8,6 +8,14 @@ class GroupFlow < AuthenticatedBaseFlow
     el("@group-title", text: title).click
   end
 
+  def visit_group_info(group : Group)
+    click "@group-nav-info"
+  end
+
+  def visit_group_bits(group : Group)
+    click "@group-nav-bits"
+  end
+
   def create_new_group(title : String)
     click "@new-group"
     fill_form(SaveGroup, title: title)

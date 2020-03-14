@@ -52,7 +52,7 @@ class Feeds::Show < FeedAction
           "link",
           rel: "related",
           type: "text/html",
-          href: Groups::Show.with(group).url
+          href: Groups::Bits::Index.url(group)
         )
       end
       xml.element("published") { xml.text bit.created_at.to_rfc3339 }
