@@ -5,11 +5,11 @@ class GroupInvite < Membership::SaveOperation
 
   def prepare
     validate_required username
-    user = find_requested_user
+    user_from_username = find_requested_user
 
-    if user
-      user_id.value = user.id
-    else
+    if user_from_username
+      user_id.value = user_from_username.id
+    elsif username_present?
       username.add_error "is not associated with any user"
     end
   end
@@ -18,5 +18,9 @@ class GroupInvite < Membership::SaveOperation
     username.value.try do |value|
       UserQuery.new.username(value).first?
     end
+  end
+
+  private def username_present?
+    !username.value.blank?
   end
 end
