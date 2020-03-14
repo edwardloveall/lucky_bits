@@ -4,7 +4,7 @@ class Memberships::Create < BrowserAction
   route do
     GroupInvite.create(params, group_id: group_id) do |operation, membership|
       if membership
-        flash.success = "#{operation.username.value} is now a member!"
+        flash.success = "#{membership.user!.username} is now a member!"
         redirect Groups::Show.with(group_id)
       else
         group = GroupQuery.new.preload_users.find(1)
