@@ -7,7 +7,7 @@ class Memberships::Create < BrowserAction
         flash.success = "#{membership.user!.username} is now a member!"
         redirect Groups::Show.with(group_id)
       else
-        group = GroupQuery.new.preload_users.find(1)
+        group = GroupQuery.new.preload_users.find(group_id)
         html(
           Groups::ShowPage,
           group: group,
