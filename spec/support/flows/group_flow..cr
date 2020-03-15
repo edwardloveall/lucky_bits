@@ -22,8 +22,8 @@ class GroupFlow < AuthenticatedBaseFlow
     click "@create-group"
   end
 
-  def add_user_to_group(user : User, group : Group)
-    fill_form(GroupInvite, username: user.username)
+  def add_user_to_group(username : String, group : Group)
+    fill_form(GroupInvite, username: username)
     click "@create-membership"
   end
 
@@ -33,5 +33,9 @@ class GroupFlow < AuthenticatedBaseFlow
 
   def should_see_username(username : String)
     el("@user-username", text: username).should be_on_page
+  end
+
+  def should_see_username_error(message : String)
+    el("@username-error", text: message).should be_on_page
   end
 end

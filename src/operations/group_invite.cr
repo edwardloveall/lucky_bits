@@ -5,14 +5,19 @@ class GroupInvite < Membership::SaveOperation
 
   def prepare
     validate_required username
-    user_from_username = find_requested_user
+    return if username.errors.any?
 
-    if user_from_username
+    user_from_username = find_requested_user
+    validate_user_exists user_from_username
+
+    if username && user_from_username
       user_id.value = user_from_username.id
-      if GroupQuery.new.contains_user?(group_id.value, user_from_username)
-        username.add_error "is already in the group"
-      end
-    elsif username_present?
+      validate_user_not_already_in_group group_id.value, user_from_username
+    end
+  end
+
+  private def validate_user_exists(user : User?)
+    if !user
       username.add_error "is not associated with any user"
     end
   end
@@ -23,7 +28,16 @@ class GroupInvite < Membership::SaveOperation
     end
   end
 
-  private def username_present?
-    !username.value.blank?
+  private def validate_user_not_already_in_group(
+    group_id : Int64?,
+    user : User
+  )
+    if group_id
+      if GroupQuery.new.contains_user?(group_id, user)
+        username.add_error "is already in the group"
+      end
+    else
+      raise "Group id does not exist: #{group_id}"
+    end
   end
 end
