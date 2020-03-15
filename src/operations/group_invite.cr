@@ -9,6 +9,9 @@ class GroupInvite < Membership::SaveOperation
 
     if user_from_username
       user_id.value = user_from_username.id
+      if GroupQuery.new.contains_user?(group_id.value, user_from_username)
+        username.add_error "is already in the group"
+      end
     elsif username_present?
       username.add_error "is not associated with any user"
     end
