@@ -34,8 +34,4 @@ class GroupFlow < AuthenticatedBaseFlow
   def should_see_username(username : String)
     el("@user-username", text: username).should be_on_page
   end
-
-  def should_see_username_error(message : String)
-    el("@username-error", text: message).should be_on_page
-  end
 end
