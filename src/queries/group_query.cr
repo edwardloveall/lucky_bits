@@ -1,5 +1,5 @@
 class GroupQuery < Group::BaseQuery
-  def contains_user?(group_id : Int64, user : User)
-    id.eq(group_id).where_users(UserQuery.new.id.eq(user.id)).any?
+  def contains_user?(group_id : Int64, user_id : Int64)
+    MembershipQuery.exists_for_group_and_user?(group_id, user_id).any?
   end
 end

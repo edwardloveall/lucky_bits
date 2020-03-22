@@ -33,7 +33,7 @@ class GroupInvite < Membership::SaveOperation
     user : User
   )
     if group_id
-      if GroupQuery.new.contains_user?(group_id, user)
+      if GroupQuery.new.contains_user?(group_id, user.id)
         username.add_error "is already in the group"
       end
     else
