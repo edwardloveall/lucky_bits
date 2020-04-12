@@ -3,7 +3,7 @@ module Shared::BitList
     section class: "bits" do
       bits.each do |bit|
         div class: "bit" do
-          link bit.title, to: bit.url, flow_id: "bit-title", class: "title"
+          a bit.title, href: bit.url, flow_id: "bit-title", class: "title"
           meta(bit)
           description(bit)
           actions(bit)

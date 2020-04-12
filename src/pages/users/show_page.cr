@@ -5,7 +5,7 @@ class Users::ShowPage < MainLayout
   needs user : User
 
   def content
-    h2 @user.username
-    bit_list(@bits)
+    h2 user.username
+    bit_list(bits)
   end
 end

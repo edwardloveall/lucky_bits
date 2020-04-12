@@ -3,7 +3,7 @@ class PasswordResetRequests::NewPage < GuestLayout
 
   def content
     h1 "Reset your password"
-    render_form(@reset_password_request)
+    render_form(reset_password_request)
   end
 
   private def render_form(op)

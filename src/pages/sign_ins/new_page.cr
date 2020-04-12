@@ -3,7 +3,7 @@ class SignIns::NewPage < GuestLayout
 
   def content
     h1 "Sign In"
-    render_sign_in_form(@operation)
+    render_sign_in_form(operation)
   end
 
   private def render_sign_in_form(f)

@@ -3,7 +3,7 @@ class Groups::NewPage < MainLayout
 
   def content
     h2 "Create Group"
-    render_group_form(@save_group)
+    render_group_form(save_group)
   end
 
   private def render_group_form(op : SaveGroup)

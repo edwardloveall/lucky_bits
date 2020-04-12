@@ -1,4 +1,6 @@
 module Shared::Field
+  include Lucky::CatchUnpermittedAttribute
+
   private def field(
     field,
     hide_label : Bool = false,

@@ -3,11 +3,11 @@ class Groups::Bits::NewPage < MainLayout
   needs group : Group
 
   def content
-    render_bit_form(@save_bit)
+    render_bit_form(save_bit)
   end
 
   private def render_bit_form(op : SaveBit)
-    form_for Groups::Bits::Create.with(@group.id) do
+    form_for Groups::Bits::Create.with(group.id) do
       field(op.title) { |f| text_input f }
       field(op.url) { |f| text_input f }
       field(op.description) { |f| textarea f }

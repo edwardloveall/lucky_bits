@@ -4,6 +4,6 @@ class Bits::IndexPage < MainLayout
   needs bits : BitQuery
 
   def content
-    bit_list(@bits)
+    bit_list(bits)
   end
 end

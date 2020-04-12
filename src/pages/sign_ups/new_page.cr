@@ -3,7 +3,7 @@ class SignUps::NewPage < GuestLayout
 
   def content
     h1 "Sign Up"
-    render_sign_up_form(@operation)
+    render_sign_up_form(operation)
   end
 
   private def render_sign_up_form(f)

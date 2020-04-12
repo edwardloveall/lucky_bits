@@ -33,6 +33,6 @@ abstract class MainLayout
   end
 
   private def skip_to_content_link
-    link "Skip to content", to: "#main-content", class: "skip-to-main"
+    a "Skip to content", href: "#main-content", class: "skip-to-main"
   end
 end
