@@ -2,7 +2,7 @@ version: 1.0
 shards:
   authentic:
     github: luckyframework/authentic
-    version: 0.5.2
+    version: 0.5.4
 
   avram:
     github: luckyframework/avram
@@ -17,7 +17,7 @@ shards:
     version: 0.1.1
 
   cry:
-    github: luckyframework/cry
+    github: paulcsmith/cry
     version: 0.4.2
 
   db:
@@ -38,7 +38,7 @@ shards:
 
   lucky:
     github: luckyframework/lucky
-    version: 0.18.3
+    version: 0.19.0
 
   lucky_cli:
     github: luckyframework/lucky_cli
@@ -46,7 +46,7 @@ shards:
 
   lucky_flow:
     github: luckyframework/lucky_flow
-    version: 0.6.2
+    version: 0.6.3
 
   lucky_router:
     github: luckyframework/lucky_router

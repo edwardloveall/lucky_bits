@@ -13,10 +13,10 @@ crystal: 0.33.0
 dependencies:
   lucky:
     github: luckyframework/lucky
-    version: ~> 0.18.1
+    version: ~> 0.19.0
   avram:
     github: luckyframework/avram
-    version: ~> 0.12.1
+    version: ~> 0.12.3
   authentic:
     github: luckyframework/authentic
     version: ~> 0.5.1
@@ -25,4 +25,4 @@ dependencies:
     version: ~> 0.1.1
   lucky_flow:
     github: luckyframework/lucky_flow
-    version: ~> 0.6.0
+    version: ~> 0.6.2
