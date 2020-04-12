@@ -8,7 +8,7 @@ targets:
   linkybits:
     main: src/linkybits.cr
 
-crystal: 0.33.0
+crystal: 0.34.0
 
 dependencies:
   lucky:
