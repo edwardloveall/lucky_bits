@@ -16,6 +16,19 @@ describe "User visits bit homepage" do
     flow.should_see_bit_on_page
   end
 
+  it "fills in bit details from a bookmarklet URL params" do
+    user = UserBox.create
+    group = GroupBox.create(&.title("Fun Pod"))
+    MembershipBox.create(&.user_id(user.id).group_id(group.id))
+    flow = BitFlow.new(user: user)
+
+    flow.sign_in
+    flow.visit Groups::Bits::New.path(group, title: "LinkyBits", url: "https://linkybits.net")
+
+    flow.el("#bit_title").value.should eq("LinkyBits")
+    flow.el("#bit_url").value.should eq("https://linkybits.net")
+  end
+
   it "edits one of their bits" do
     user = UserBox.create
     group = GroupBox.create(&.title("Fun Pod"))

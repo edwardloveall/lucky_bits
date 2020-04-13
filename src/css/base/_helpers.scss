@@ -61,7 +61,12 @@ $highlight-offset-h: -0.3ex;
   padding-left: $spacing-base;
 }
 
+@mixin section-margin {
+  margin-bottom: $spacing-large;
+}
+
 @mixin section {
   @include section-highlight;
+  @include section-margin;
   @include section-padding;
 }

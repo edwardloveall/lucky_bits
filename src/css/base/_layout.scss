@@ -7,3 +7,7 @@ main {
   margin-top: $spacing-large;
   max-width: map-get($breakpoints, large);
 }
+
+.section {
+  @include section;
+}

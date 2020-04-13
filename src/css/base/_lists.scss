@@ -7,11 +7,4 @@ ul {
     list-style-type: none;
     margin-bottom: $spacing-x-small;
   }
-
-  @include breakpoint("small") {
-    li {
-      display: inline;
-      margin-right: $spacing-base;
-    }
-  }
 }

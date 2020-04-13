@@ -7,4 +7,11 @@ nav {
       $color-link
     );
   }
+
+  @include breakpoint("small") {
+    li {
+      display: inline;
+      margin-right: $spacing-base;
+    }
+  }
 }

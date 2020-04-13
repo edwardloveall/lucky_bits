@@ -9,7 +9,7 @@ class Groups::Bits::Create < BrowserAction
       if bit
         redirect to: Groups::Bits::Index.with(group)
       else
-        html Groups::Bits::NewPage, save_bit: SaveBit.new, group: group
+        html Groups::Bits::NewPage, save_bit: SaveBit.new(params), group: group
       end
     end
   end

@@ -1,9 +1,6 @@
 nav.group {
-  margin-bottom: $spacing-large;
-}
-
-.group {
   display: block;
+  margin-bottom: $spacing-large;
 }
 
 .new-bit-section {
@@ -17,16 +14,4 @@ nav.group {
       $color-link
     );
   }
-}
-
-.group-members-section {
-  @include section;
-}
-
-.group-invite-section {
-  @include section;
-}
-
-.group-bits-section {
-  @include section;
 }

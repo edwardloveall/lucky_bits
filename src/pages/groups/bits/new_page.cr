@@ -7,6 +7,7 @@ class Groups::Bits::NewPage < MainLayout
   end
 
   private def render_bit_form(op : SaveBit)
+    h2 "Post to #{group.title}"
     form_for Groups::Bits::Create.with(group.id) do
       field(op.title) { |f| text_input f }
       field(op.url) { |f| text_input f }

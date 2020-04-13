@@ -6,7 +6,7 @@ class Groups::ShowPage < MainLayout
     h2 group.title
     mount Groups::SharedNav.new(group)
 
-    section class: "group-members-section" do
+    section class: "group-members-section section" do
       h2 "Members"
       ul do
         group.users.each do |user|
@@ -15,9 +15,15 @@ class Groups::ShowPage < MainLayout
       end
     end
 
-    section class: "group-invite-section" do
+    section class: "group-invite-section section" do
       h2 "Invite"
       render_group_invite_form(group_invite)
+    end
+
+    section class: "group-bookmarklet section" do
+      h2 "Bookmarklet"
+      mount Groups::BookmarkletDescription.new
+      mount Groups::Bookmarklet.new(group)
     end
   end
 
