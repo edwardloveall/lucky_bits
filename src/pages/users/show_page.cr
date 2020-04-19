@@ -4,6 +4,10 @@ class Users::ShowPage < MainLayout
   needs bits : BitQuery
   needs user : User
 
+  private def page_title
+    user.username
+  end
+
   def content
     h2 user.username
     bit_list(bits)

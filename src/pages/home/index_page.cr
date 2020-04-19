@@ -15,4 +15,8 @@ class Home::IndexPage < GuestLayout
       link "Sign In", to: SignIns::New
     end
   end
+
+  private def page_title
+    "Welcome"
+  end
 end

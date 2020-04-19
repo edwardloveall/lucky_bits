@@ -2,6 +2,10 @@ class Groups::Bits::NewPage < MainLayout
   needs save_bit : SaveBit
   needs group : Group
 
+  private def page_title
+    "New Bit"
+  end
+
   def content
     render_bit_form(save_bit)
   end

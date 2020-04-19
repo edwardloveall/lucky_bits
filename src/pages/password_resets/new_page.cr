@@ -2,6 +2,10 @@ class PasswordResets::NewPage < GuestLayout
   needs reset_password : ResetPassword
   needs user_id : Int32
 
+  private def page_title
+    "Reset Password"
+  end
+
   def content
     h1 "Reset your password"
     render_password_reset_form(reset_password)

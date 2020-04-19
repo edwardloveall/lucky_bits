@@ -3,6 +3,10 @@ class Bits::IndexPage < MainLayout
 
   needs bits : BitQuery
 
+  private def page_title
+    "My Bits"
+  end
+
   def content
     bit_list(bits)
   end

@@ -11,7 +11,7 @@ module Shared::Layout
   def shared_layout_head
     head do
       utf8_charset
-      title "My App - #{page_title}"
+      title decorated_page_title
       css_link asset("css/app.css"), data_turbolinks_track: "reload"
       js_link asset("js/app.js"), defer: "true", data_turbolinks_track: "reload"
       csrf_meta_tags
@@ -22,6 +22,14 @@ module Shared::Layout
   abstract def page_title
 
   def page_title
-    "Welcome"
+    nil
+  end
+
+  def decorated_page_title
+    page_title && "#{page_title} - LuckyBits" || default_page_title
+  end
+
+  def default_page_title
+    "LuckyBits"
   end
 end

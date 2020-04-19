@@ -1,6 +1,10 @@
 class Me::ShowPage < MainLayout
   needs reset_password : ResetPassword
 
+  private def page_title
+    "Account"
+  end
+
   def content
     h3 "#{current_user.username}"
 

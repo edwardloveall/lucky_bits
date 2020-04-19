@@ -1,6 +1,10 @@
 class Groups::IndexPage < MainLayout
   needs groups : GroupQuery
 
+  private def page_title
+    "My Groups"
+  end
+
   def content
     h2 "Groups"
     section class: "section" do

@@ -2,6 +2,10 @@ class Groups::ShowPage < MainLayout
   needs group : Group
   needs group_invite : GroupInvite
 
+  private def page_title
+    group.title
+  end
+
   def content
     h2 group.title
     mount Groups::SharedNav.new(group)

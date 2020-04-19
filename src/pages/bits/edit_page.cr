@@ -2,6 +2,10 @@ class Bits::EditPage < MainLayout
   needs save_bit : SaveBit
   needs bit : Bit
 
+  private def page_title
+    "Edit"
+  end
+
   def content
     render_bit_form(save_bit)
   end

@@ -1,6 +1,10 @@
 class SignIns::NewPage < GuestLayout
   needs operation : SignInUser
 
+  private def page_title
+    "Sign In"
+  end
+
   def content
     h1 "Sign In"
     render_sign_in_form(operation)

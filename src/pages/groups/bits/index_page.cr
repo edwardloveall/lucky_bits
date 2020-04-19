@@ -4,6 +4,10 @@ class Groups::Bits::IndexPage < MainLayout
   needs group : Group
   needs bits : BitQuery
 
+  private def page_title
+    group.title
+  end
+
   def content
     h2 group.title
     mount Groups::SharedNav.new(group)
