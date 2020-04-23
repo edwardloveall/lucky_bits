@@ -1,6 +1,5 @@
-ENV["LUCKY_ENV"] = "test"
-ENV["DEV_PORT"] = "5001"
 require "spec"
+require "./support/env"
 require "lucky_flow"
 require "../src/app"
 require "./support/flows/base_flow"
