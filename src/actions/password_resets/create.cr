@@ -8,7 +8,7 @@ class PasswordResets::Create < BrowserAction
         session.delete(:password_reset_token)
         sign_in user
         flash.success = "Your password has been reset"
-        redirect to: Home::Index
+        redirect to: Groups::Index
       else
         html NewPage, reset_password: operation, user_id: user_id.to_i
       end
