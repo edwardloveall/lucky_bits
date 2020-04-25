@@ -1,0 +1,29 @@
+@function flash-background($color) {
+  $lightness: lightness($color);
+  $adjust-lightness: (100 - $lightness) * 0.8;
+  @return lighten($color, $adjust-lightness);
+}
+
+@mixin flash-style($color) {
+  background-color: flash-background($color);
+  border: 1px solid $color;
+}
+
+.flash-info,
+.flash-success,
+.flash-failure {
+  margin-bottom: $spacing-base;
+  padding: $spacing-small $spacing-base;
+}
+
+.flash-info {
+  @include flash-style($color-blue);
+}
+
+.flash-success {
+  @include flash-style($color-green);
+}
+
+.flash-failure {
+  @include flash-style($color-red);
+}

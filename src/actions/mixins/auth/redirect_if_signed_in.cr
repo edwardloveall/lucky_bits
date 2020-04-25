@@ -7,7 +7,7 @@ module Auth::RedirectIfSignedIn
   private def redirect_if_signed_in
     if current_user?
       flash.success = "You are already signed in"
-      redirect to: Me::Show
+      redirect to: Groups::Index
     else
       continue
     end

@@ -7,6 +7,7 @@ class Groups::Bits::Create < BrowserAction
       group_id: group.id
     ) do |operation, bit|
       if bit
+        flash.success = "Bit created."
         redirect to: Groups::Bits::Index.with(group)
       else
         html Groups::Bits::NewPage, save_bit: operation, group: group
