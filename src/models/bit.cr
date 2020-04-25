@@ -4,6 +4,6 @@ class Bit < BaseModel
     column url : String
     column description : String?
     belongs_to user : User
-    belongs_to group : Group?
+    belongs_to group : Group
   end
 end

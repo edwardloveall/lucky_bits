@@ -1,7 +1,8 @@
 class Bits::Delete < BrowserAction
   route do
-    BitQuery.find(bit_id).delete
+    bit = BitQuery.find(bit_id)
+    bit.delete
     flash.success = "Bit deleted."
-    redirect Me::Show
+    redirect Groups::Bits::Index.with(bit.group_id)
   end
 end
