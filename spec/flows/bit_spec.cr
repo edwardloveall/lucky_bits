@@ -81,4 +81,21 @@ describe "User visits bit homepage" do
 
     flow.el("@bit-title", text: "Edited Bit").should_not be_on_page
   end
+
+  it "shows only my bits" do
+    user = UserBox.create
+    other = UserBox.create
+    group = GroupBox.create
+    MembershipBox.create(&.user_id(user.id).group_id(group.id))
+    MembershipBox.create(&.user_id(other.id).group_id(group.id))
+    flow = BitFlow.new(user: user)
+    bit = BitBox.create(&.user_id(user.id).group_id(group.id).title("Meee"))
+    other_bit = BitBox.create(&.user_id(other.id).group_id(group.id).title("Someone else"))
+
+    flow.sign_in
+    flow.visit_bit_index
+
+    flow.el("@bit-title", text: "Meee").should be_on_page
+    flow.el("@bit-title", text: "Someone else").should_not be_on_page
+  end
 end

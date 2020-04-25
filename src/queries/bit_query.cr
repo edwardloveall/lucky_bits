@@ -29,12 +29,7 @@ class BitQuery < Bit::BaseQuery
 
   def for(user : User)
     preload_user
-      .where_groups(
-        GroupQuery.new.where_memberships(
-          MembershipQuery.new.user_id(user.id)
-        )
-      )
-      .user_id.not.eq(user.id)
+      .user_id.eq(user.id)
       .recently_created
   end
 end
