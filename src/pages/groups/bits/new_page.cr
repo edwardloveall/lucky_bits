@@ -13,9 +13,9 @@ class Groups::Bits::NewPage < MainLayout
   private def render_bit_form(op : SaveBit)
     h2 "Post to #{group.title}"
     form_for Groups::Bits::Create.with(group.id) do
-      field(op.title) { |f| text_input f }
-      field(op.url) { |f| text_input f }
-      field(op.description) { |f| textarea f }
+      field(op.title) { |field| text_input(field) }
+      field(op.url) { |field| text_input(field) }
+      field(op.description) { |field| textarea(field) }
 
       div class: "action" do
         submit "Create Bit", flow_id: "create-bit-form-submit"

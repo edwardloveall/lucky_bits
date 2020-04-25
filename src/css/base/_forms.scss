@@ -13,6 +13,9 @@ label {
 #{$all-text-inputs} {
   border: 1px solid $color-black;
   font-family: $font-family-base;
+}
+
+.field {
   margin-bottom: $spacing-base;
 }
 
