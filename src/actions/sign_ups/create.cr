@@ -6,7 +6,7 @@ class SignUps::Create < BrowserAction
       if user
         flash.info = "Thanks for signing up"
         sign_in(user)
-        redirect to: Me::Show
+        redirect to: Groups::Index
       else
         flash.info = "Couldn't sign you up"
         html NewPage, operation: operation
