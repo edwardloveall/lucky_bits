@@ -4,6 +4,10 @@ class Groups::Index < BrowserAction
       .join_users
       .where_users(UserQuery.new.id(current_user.id))
 
-    html Groups::IndexPage, groups: groups
+    if groups.empty?
+      html Groups::IndexCoachPage
+    else
+      html Groups::IndexPage, groups: groups
+    end
   end
 end

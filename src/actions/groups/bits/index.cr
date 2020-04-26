@@ -3,6 +3,10 @@ class Groups::Bits::Index < BrowserAction
     group = GroupQuery.find(group_id)
     bits = BitQuery.new.for_group(group)
 
-    html Groups::Bits::IndexPage, group: group, bits: bits
+    if bits.empty?
+      html Groups::Bits::IndexCoachPage, group: group
+    else
+      html Groups::Bits::IndexPage, group: group, bits: bits
+    end
   end
 end
