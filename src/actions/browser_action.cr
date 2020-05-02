@@ -6,7 +6,6 @@ abstract class BrowserAction < Lucky::Action
   accepted_formats [:html, :json], default: :html
   expose current_user
 
-
   private def find_current_user(id) : User
     UserQuery.find(id)
   end

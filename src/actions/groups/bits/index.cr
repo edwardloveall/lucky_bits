@@ -1,7 +1,7 @@
 class Groups::Bits::Index < BrowserAction
   nested_route do
     group = GroupQuery.find(group_id)
-    bits = BitQuery.new.for_group(group)
+    bits = BitQuery.from_group(group)
 
     if bits.empty?
       html Groups::Bits::IndexCoachPage, group: group

@@ -1,9 +1,9 @@
 class BitQuery < Bit::BaseQuery
-  def self.recently_created
-    new.recently_created
+  def self.newest_first
+    new.newest_first
   end
 
-  def recently_created
+  def newest_first
     created_at.desc_order
   end
 
@@ -15,12 +15,18 @@ class BitQuery < Bit::BaseQuery
     preload_user.user_id(user.id)
   end
 
-  def self.for_group(group : Group)
-    new.for_group(group)
+  def self.from_group(
+    group : Group,
+    without_bits_from : UserLike = NullUser.new
+  )
+    new.from_group(group, without_bits_from)
   end
 
-  def for_group(group : Group)
-    preload_user.group_id(group.id).recently_created
+  def from_group(
+    group : Group,
+    without_bits_from user : UserLike = NullUser.new
+  )
+    preload_user.group_id(group.id).user_id.not.eq(user.id)
   end
 
   def self.for(user : User)
@@ -30,6 +36,6 @@ class BitQuery < Bit::BaseQuery
   def for(user : User)
     preload_user
       .user_id.eq(user.id)
-      .recently_created
+      .newest_first
   end
 end

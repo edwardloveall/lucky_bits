@@ -29,6 +29,17 @@ class Groups::ShowPage < MainLayout
       mount Groups::BookmarkletDescription.new
       mount Groups::Bookmarklet.new(group)
     end
+
+    section class: "section" do
+      full = Groups::Bits::FullFeed.with(group, feed_token: feed_token)
+      personal = Groups::Bits::PersonalFeed.with(group, feed_token: feed_token)
+
+      h2 "Feeds"
+      ul do
+        li { link "All Bits", to: full }
+        li { link "All Bits (except yours)", to: personal }
+      end
+    end
   end
 
   private def render_group_invite_form(op : GroupInvite)
@@ -37,5 +48,9 @@ class Groups::ShowPage < MainLayout
 
       submit "Invite", flow_id: "create-membership"
     end
+  end
+
+  private def feed_token
+    current_user.feed_token
   end
 end

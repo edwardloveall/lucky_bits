@@ -3,6 +3,6 @@ class BitBox < Avram::Box
     title "LinkyBits"
     url "https://linkybits.net"
     description "Maybe we could use this to share links?"
-    user_id UserBox.create().id
+    user_id UserBox.create.id
   end
 end

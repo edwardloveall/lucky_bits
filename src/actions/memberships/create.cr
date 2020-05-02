@@ -12,7 +12,7 @@ class Memberships::Create < BrowserAction
           Groups::ShowPage,
           group: group,
           group_invite: operation,
-          group_bits: BitQuery.for_group(group),
+          group_bits: BitQuery.from_group(group),
         )
       end
     end
