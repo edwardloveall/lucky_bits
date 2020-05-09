@@ -10,6 +10,7 @@ abstract class GuestLayout
       body do
         render_flash
         content
+        shared_footer
       end
     end
   end

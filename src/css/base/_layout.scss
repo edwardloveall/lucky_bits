@@ -1,13 +1,27 @@
 body {
   background-color: $color-base;
+  display: flex;
+  flex-direction: column;
   padding: $spacing-base;
+  padding-bottom: 0;
 }
 
 main {
+  flex-grow: 1;
   margin-top: $spacing-large;
   max-width: map-get($breakpoints, large);
 }
 
 .section {
   @include section;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding-bottom: $spacing-base;
+}
+
+footer span:not(:last-child) {
+  margin-right: $spacing-base;
 }

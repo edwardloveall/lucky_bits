@@ -16,6 +16,7 @@ abstract class MainLayout
         main id: "main-content" do
           content
         end
+        shared_footer
       end
     end
   end

@@ -32,4 +32,17 @@ module Shared::Layout
   def default_page_title
     "LuckyBits"
   end
+
+  private def shared_footer
+    footer do
+      span do
+        text "Made with "
+        a "Lucky", href: "https://luckyframework.org/"
+      end
+      span { text " | " }
+      span do
+        a "Open source", href: "https://github.com/edwardloveall/lucky_bits/"
+      end
+    end
+  end
 end
