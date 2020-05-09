@@ -26,7 +26,7 @@ class BitQuery < Bit::BaseQuery
     group : Group,
     without_bits_from user : UserLike = NullUser.new
   )
-    preload_user.group_id(group.id).user_id.not.eq(user.id)
+    preload_user.group_id(group.id).user_id.not.eq(user.id).newest_first
   end
 
   def self.for(user : User)
