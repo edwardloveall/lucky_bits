@@ -9,7 +9,9 @@ abstract class GuestLayout
 
       body do
         render_flash
-        content
+        main id: "main-content" do
+          content
+        end
         shared_footer
       end
     end
