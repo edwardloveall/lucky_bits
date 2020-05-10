@@ -48,13 +48,13 @@ module BitFeed
         "link",
         rel: "alternate",
         type: "text/html",
-        href: Groups::Bits::Index.url(group)
+        href: URI.encode(bit.url)
       )
       xml.element(
         "link",
         rel: "related",
         type: "text/html",
-        href: URI.encode(bit.url)
+        href: Groups::Bits::Index.url(group)
       )
       xml.element("published") { xml.text bit.created_at.to_rfc3339 }
       xml.element("updated") { xml.text bit.updated_at.to_rfc3339 }
