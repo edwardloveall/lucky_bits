@@ -45,4 +45,8 @@ module Shared::Layout
       end
     end
   end
+
+  private def analytics
+    tag "script", src: "https://kindmetrics.io/js/track.js", defer: true, "data-domain": "luckybits.link"
+  end
 end
