@@ -13,6 +13,7 @@ abstract class GuestLayout
           content
         end
         shared_footer
+        analytics
       end
     end
   end
