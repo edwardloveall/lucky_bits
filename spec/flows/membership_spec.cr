@@ -2,10 +2,10 @@ require "../spec_helper"
 
 describe "User invites someone to a group" do
   it "shows them in the group list" do
-    user1 = UserBox.create(&.username("edward"))
-    group = GroupBox.create
-    MembershipBox.create(&.user_id(user1.id).group_id(group.id))
-    user2 = UserBox.create(&.username("elizabeth"))
+    user1 = UserFactory.create(&.username("edward"))
+    group = GroupFactory.create
+    MembershipFactory.create(&.user_id(user1.id).group_id(group.id))
+    user2 = UserFactory.create(&.username("elizabeth"))
     flow = GroupFlow.new(user1)
 
     flow.sign_in

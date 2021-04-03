@@ -2,7 +2,7 @@ require "../spec_helper"
 
 describe "User creates a new group" do
   it "is automatically added to it" do
-    user = UserBox.create
+    user = UserFactory.create
     flow = GroupFlow.new(user)
 
     flow.sign_in
@@ -15,11 +15,11 @@ end
 
 describe "User visits a group they are a part of" do
   it "see users part of the group" do
-    user1 = UserBox.create(&.username("edward"))
-    user2 = UserBox.create(&.username("elizabeth"))
-    group = GroupBox.create
-    MembershipBox.create(&.user_id(user1.id).group_id(group.id))
-    MembershipBox.create(&.user_id(user2.id).group_id(group.id))
+    user1 = UserFactory.create(&.username("edward"))
+    user2 = UserFactory.create(&.username("elizabeth"))
+    group = GroupFactory.create
+    MembershipFactory.create(&.user_id(user1.id).group_id(group.id))
+    MembershipFactory.create(&.user_id(user2.id).group_id(group.id))
     flow = GroupFlow.new(user1)
 
     flow.sign_in

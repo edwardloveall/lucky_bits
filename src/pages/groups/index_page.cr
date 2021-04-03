@@ -29,12 +29,12 @@ class Groups::IndexPage < MainLayout
   private def bookmarklets(groups : GroupQuery)
     section class: "bookmarklets section" do
       h2 "Bookmarklets"
-      mount Groups::BookmarkletDescription.new
+      mount Groups::BookmarkletDescription
 
       ul do
         groups.each do |group|
           li class: "bookmarklet" do
-            mount Groups::Bookmarklet.new(group)
+            mount Groups::Bookmarklet, group: group
           end
         end
       end

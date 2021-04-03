@@ -7,7 +7,7 @@ class Groups::Bits::IndexCoachPage < MainLayout
 
   def content
     h2 group.title
-    mount Groups::SharedNav.new(group)
+    mount Groups::SharedNav, group: group
 
     section class: "group-bits-section section" do
       h2 "Bits"
