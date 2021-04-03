@@ -20,6 +20,10 @@ shards:
     git: https://github.com/luckyframework/cry.git
     version: 0.4.3
 
+  crystar:
+    git: https://github.com/naqvis/crystar.git
+    version: 0.2.0
+
   db:
     git: https://github.com/crystal-lang/crystal-db.git
     version: 0.10.1
@@ -30,7 +34,7 @@ shards:
 
   exception_page:
     git: https://github.com/crystal-loot/exception_page.git
-    version: 0.1.4
+    version: 0.1.5
 
   future:
     git: https://github.com/crystal-community/future.cr.git
@@ -50,7 +54,7 @@ shards:
 
   lucky_flow:
     git: https://github.com/luckyframework/lucky_flow.git
-    version: 0.6.3
+    version: 0.7.3
 
   lucky_router:
     git: https://github.com/luckyframework/lucky_router.git
@@ -65,8 +69,8 @@ shards:
     version: 0.2.2
 
   selenium:
-    git: https://github.com/ysbaddaden/selenium-webdriver-crystal.git
-    version: 0.4.0+git.commit.bda2fd406c1a118251c5a2883f1e1f3af242116e
+    git: https://github.com/matthewmcgarvey/selenium.cr.git
+    version: 0.9.1
 
   shell-table:
     git: https://github.com/luckyframework/shell-table.cr.git
@@ -75,6 +79,10 @@ shards:
   teeplate:
     git: https://github.com/luckyframework/teeplate.git
     version: 0.8.3
+
+  webdrivers:
+    git: https://github.com/matthewmcgarvey/webdrivers.cr.git
+    version: 0.4.0
 
   wordsmith:
     git: https://github.com/luckyframework/wordsmith.git

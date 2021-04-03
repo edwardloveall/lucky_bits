@@ -22,4 +22,4 @@ dependencies:
     version: ~> 0.1.2
   lucky_flow:
     github: luckyframework/lucky_flow
-    version: ~> 0.6.3
+    version: ~> 0.7.3
