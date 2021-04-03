@@ -3,7 +3,7 @@ require "../spec_helper"
 describe "A user" do
   it "can update password on account page" do
     old_pass = Authentic.generate_encrypted_password("password")
-    user = UserBox.create(&.encrypted_password(old_pass))
+    user = UserFactory.create(&.encrypted_password(old_pass))
     flow = UserFlow.new(user)
 
     flow.sign_in

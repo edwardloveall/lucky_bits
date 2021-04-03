@@ -4,14 +4,14 @@ class SignInUser < Avram::Operation
   attribute email : String
   attribute password : String
 
-  def submit
+  def run
     user = user_from_email
     validate_credentials(user)
 
     if valid?
-      yield self, user
+      user
     else
-      yield self, nil
+      nil
     end
   end
 

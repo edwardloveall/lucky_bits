@@ -1,74 +1,90 @@
-version: 1.0
+version: 2.0
 shards:
   authentic:
-    github: luckyframework/authentic
-    version: 0.5.4
+    git: https://github.com/luckyframework/authentic.git
+    version: 0.7.2
 
   avram:
-    github: luckyframework/avram
-    version: 0.14.0
+    git: https://github.com/luckyframework/avram.git
+    version: 0.19.1
 
   blank:
-    github: kostya/blank
+    git: https://github.com/kostya/blank.git
     version: 0.1.0
 
   carbon:
-    github: luckyframework/carbon
-    version: 0.1.1
-
-  cry:
-    github: paulcsmith/cry
-    version: 0.4.2
-
-  db:
-    github: crystal-lang/crystal-db
-    version: 0.9.0
-
-  dexter:
-    github: luckyframework/dexter
-    version: 0.2.0
-
-  exception_page:
-    github: crystal-loot/exception_page
+    git: https://github.com/luckyframework/carbon.git
     version: 0.1.4
 
-  habitat:
-    github: luckyframework/habitat
+  cry:
+    git: https://github.com/luckyframework/cry.git
     version: 0.4.3
 
+  crystar:
+    git: https://github.com/naqvis/crystar.git
+    version: 0.2.0
+
+  db:
+    git: https://github.com/crystal-lang/crystal-db.git
+    version: 0.10.1
+
+  dexter:
+    git: https://github.com/luckyframework/dexter.git
+    version: 0.3.3
+
+  exception_page:
+    git: https://github.com/crystal-loot/exception_page.git
+    version: 0.1.5
+
+  future:
+    git: https://github.com/crystal-community/future.cr.git
+    version: 1.0.0+git.commit.9fe168418c6884cb3552c13b004763eb4815ceb9
+
+  habitat:
+    git: https://github.com/luckyframework/habitat.git
+    version: 0.4.7
+
   lucky:
-    github: luckyframework/lucky
-    version: 0.21.0
+    git: https://github.com/luckyframework/lucky.git
+    version: 0.26.0
 
   lucky_cli:
-    github: luckyframework/lucky_cli
-    version: 0.21.0
+    git: https://github.com/luckyframework/lucky_cli.git
+    version: 0.26.0
 
   lucky_flow:
-    github: luckyframework/lucky_flow
-    version: 0.6.3
+    git: https://github.com/luckyframework/lucky_flow.git
+    version: 0.7.3
 
   lucky_router:
-    github: luckyframework/lucky_router
-    version: 0.2.2
+    git: https://github.com/luckyframework/lucky_router.git
+    version: 0.4.2
 
   pg:
-    github: will/crystal-pg
-    version: 0.21.0
+    git: https://github.com/will/crystal-pg.git
+    version: 0.23.2
+
+  pulsar:
+    git: https://github.com/luckyframework/pulsar.git
+    version: 0.2.2
 
   selenium:
-    github: ysbaddaden/selenium-webdriver-crystal
-    commit: bda2fd406c1a118251c5a2883f1e1f3af242116e
+    git: https://github.com/matthewmcgarvey/selenium.cr.git
+    version: 0.9.1
 
   shell-table:
-    github: luckyframework/shell-table.cr
-    commit: 078a04ea58ead5203bb435a3b5fff448ddabaeea
+    git: https://github.com/luckyframework/shell-table.cr.git
+    version: 0.9.2+git.commit.078a04ea58ead5203bb435a3b5fff448ddabaeea
 
   teeplate:
-    github: luckyframework/teeplate
-    version: 0.8.1
+    git: https://github.com/luckyframework/teeplate.git
+    version: 0.8.3
+
+  webdrivers:
+    git: https://github.com/matthewmcgarvey/webdrivers.cr.git
+    version: 0.4.0
 
   wordsmith:
-    github: luckyframework/wordsmith
-    version: 0.2.0
+    git: https://github.com/luckyframework/wordsmith.git
+    version: 0.2.2
 

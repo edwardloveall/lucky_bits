@@ -9,7 +9,7 @@ class User < BaseModel
     column username : String
     has_many bits : Bit
     has_many memberships : Membership
-    has_many groups : Group, through: :memberships
+    has_many groups : Group, through: [:memberships, :groups]
   end
 
   def emailable : Carbon::Address

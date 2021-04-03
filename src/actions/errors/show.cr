@@ -1,9 +1,9 @@
 class Errors::Show < Lucky::ErrorAction
   DEFAULT_MESSAGE = "Something went wrong."
   default_format :html
-  dont_report [Lucky::RouteNotFoundError]
+  dont_report [Lucky::RouteNotFoundError, Avram::RecordNotFoundError]
 
-  def render(error : Lucky::RouteNotFoundError)
+  def render(error : Lucky::RouteNotFoundError | Avram::RecordNotFoundError)
     if html?
       error_html "Sorry, we couldn't find that page.", status: 404
     else

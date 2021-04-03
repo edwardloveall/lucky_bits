@@ -10,7 +10,7 @@ class Groups::Bits::IndexPage < MainLayout
 
   def content
     h2 group.title
-    mount Groups::SharedNav.new(group)
+    mount Groups::SharedNav, group: group
 
     section class: "new-bit-section section" do
       link "New Bit", to: Groups::Bits::New.with(group), flow_id: "new-group-bit-link"

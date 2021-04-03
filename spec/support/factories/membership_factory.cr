@@ -1,0 +1,2 @@
+class MembershipFactory < BaseFactory
+end

@@ -56,7 +56,8 @@ class LegacyDatabase < Avram::Database
 end
 
 LegacyDatabase.configure do |settings|
-  settings.url = ENV.fetch("LEGACY_DATABASE_URL", "not gonna work")
+  legacy_url = ENV.fetch("LEGACY_DATABASE_URL", "not gonna work")
+  settings.credentials = Avram::Credentials.parse(legacy_url)
 end
 
 abstract class LegacyModel < Avram::Model
