@@ -100,11 +100,7 @@ jobs:
         if: steps.crystal-cache.outputs.cache-hit != 'true'
         run: crystal build tasks.cr -o ./lucky_tasks
 
-      # - name: Prepare database
-      #   run: |
-      #     ./lucky_tasks db.create
-      #     ./lucky_tasks db.migrate
-      #     ./lucky_tasks db.seed.required_data
-
       - name: Run tests
         run: crystal spec
+        env:
+          POSTGRES_DB: luckybits_test
