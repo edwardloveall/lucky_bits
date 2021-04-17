@@ -1,0 +1,57 @@
+name: LuckyBits CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: "*"
+
+jobs:
+  specs:
+    runs-on: ubuntu-latest
+    container: crystallang/crystal:0.36.1
+    services:
+      postgres:
+        image: postgres:10-alpine
+        env:
+          POSTGRES_USER: lucky
+          POSTGRES_PASSWORD: developer
+        ports:
+          - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Install PostgreSQL client
+        run: |
+          apt-get update
+          apt-get -yqq install libpq-dev postgresql-client
+
+      - name: Install browser
+        run: apt-get -yqq install chromium-browser
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: "Install yarn"
+        run: npm install -g yarn
+      - name: Install yarn packages
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile --no-progress
+
+      - uses: actions/checkout@v2
+      - name: Cache Crystal
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/crystal
+          key: ${{ runner.os }}-crystal
+      - name: Install shards
+        run: shards install
+
+      - name: Run tests
+        run: crystal spec
+        env:
+          DATABASE_URL: postgres://lucky:developer@postgres:5432/linkybits_dev

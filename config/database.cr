@@ -2,11 +2,12 @@ database_name = "linkybits_#{Lucky::Env.name}"
 
 AppDatabase.configure do |settings|
   if Lucky::Env.production?
-    settings.url = ENV.fetch("DATABASE_URL")
+    settings.credentials = Avram::Credentials.parse(ENV["DATABASE_URL"])
   else
-    settings.url = ENV["DATABASE_URL"]? || Avram::PostgresURL.build(
+    settings.credentials = Avram::Credentials.parse?(ENV["DATABASE_URL"]?) || Avram::Credentials.new(
       hostname: ENV["DB_HOST"]? || "localhost",
       database: database_name,
+      port: ENV["DB_PORT"]?.try(&.to_i) || 5432,
     )
   end
 end

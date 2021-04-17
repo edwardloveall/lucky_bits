@@ -7,19 +7,19 @@ if (mix.inProduction()) {
   let CompressionWepackPlugin = require("compression-webpack-plugin");
   let gzipCompression = new CompressionWepackPlugin({
     compressionOptions: { level: 9 },
-    test: /\.js$|\.css$|\.html$|\.svg$/
+    test: /\.js$|\.css$|\.html$|\.svg$/,
   });
   plugins.push(gzipCompression);
 }
 
 mix
-  .js("src/js/app.js", "public/js")
-  .sass("src/css/app.scss", "public/css")
+  .setPublicPath("public")
+  .js("src/js/app.js", "js")
+  .sass("src/css/app.scss", "css")
   .options({
     imgLoaderOptions: { enabled: false },
-    clearConsole: false
+    clearConsole: false,
   })
-  .setPublicPath("public")
   .version(["public/assets"])
   .webpackConfig({ stats: "errors-only", plugins: plugins })
   .disableNotifications();

@@ -15,9 +15,9 @@ describe "GroupInvite" do
     end
 
     it "won't allow an existing user to be added" do
-      user = UserBox.create(&.username("edward"))
-      group = GroupBox.create
-      MembershipBox.create(&.user_id(user.id).group_id(group.id))
+      user = UserFactory.create(&.username("edward"))
+      group = GroupFactory.create
+      MembershipFactory.create(&.user_id(user.id).group_id(group.id))
 
       GroupInvite.create(group_id: group.id, username: "edward") do |op, _|
         op.username.errors.should(contain("is already in the group"))

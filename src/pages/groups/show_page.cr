@@ -8,7 +8,7 @@ class Groups::ShowPage < MainLayout
 
   def content
     h2 group.title
-    mount Groups::SharedNav.new(group)
+    mount Groups::SharedNav, group: group
 
     section class: "group-members-section section" do
       h2 "Members"
@@ -26,8 +26,8 @@ class Groups::ShowPage < MainLayout
 
     section class: "group-bookmarklet section" do
       h2 "Bookmarklet"
-      mount Groups::BookmarkletDescription.new
-      mount Groups::Bookmarklet.new(group)
+      mount Groups::BookmarkletDescription
+      mount Groups::Bookmarklet, group: group
     end
 
     section class: "section" do

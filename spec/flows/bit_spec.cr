@@ -2,9 +2,9 @@ require "../spec_helper"
 
 describe "User visits bit homepage" do
   it "creates a bit" do
-    user = UserBox.create
-    group = GroupBox.create(&.title("Fun Pod"))
-    MembershipBox.create(&.user_id(user.id).group_id(group.id))
+    user = UserFactory.create
+    group = GroupFactory.create(&.title("Fun Pod"))
+    MembershipFactory.create(&.user_id(user.id).group_id(group.id))
     flow = BitFlow.new(user: user)
 
     flow.sign_in
@@ -17,9 +17,9 @@ describe "User visits bit homepage" do
   end
 
   it "fills in bit details from a bookmarklet URL params" do
-    user = UserBox.create
-    group = GroupBox.create(&.title("Fun Pod"))
-    MembershipBox.create(&.user_id(user.id).group_id(group.id))
+    user = UserFactory.create
+    group = GroupFactory.create(&.title("Fun Pod"))
+    MembershipFactory.create(&.user_id(user.id).group_id(group.id))
     flow = BitFlow.new(user: user)
 
     flow.sign_in
@@ -30,11 +30,11 @@ describe "User visits bit homepage" do
   end
 
   it "edits one of their bits" do
-    user = UserBox.create
-    group = GroupBox.create(&.title("Fun Pod"))
-    MembershipBox.create(&.user_id(user.id).group_id(group.id))
+    user = UserFactory.create
+    group = GroupFactory.create(&.title("Fun Pod"))
+    MembershipFactory.create(&.user_id(user.id).group_id(group.id))
     flow = BitFlow.new(user: user)
-    bit = BitBox.create(&.user_id(user.id).group_id(group.id))
+    bit = BitFactory.create(&.user_id(user.id).group_id(group.id))
 
     flow.sign_in
     flow.visit_group_index
@@ -47,13 +47,13 @@ describe "User visits bit homepage" do
   end
 
   it "can't edit a different bit" do
-    user1 = UserBox.create
-    user2 = UserBox.create
-    group = GroupBox.create(&.title("Fun Pod"))
-    MembershipBox.create(&.user_id(user1.id).group_id(group.id))
-    MembershipBox.create(&.user_id(user2.id).group_id(group.id))
+    user1 = UserFactory.create
+    user2 = UserFactory.create
+    group = GroupFactory.create(&.title("Fun Pod"))
+    MembershipFactory.create(&.user_id(user1.id).group_id(group.id))
+    MembershipFactory.create(&.user_id(user2.id).group_id(group.id))
     flow = BitFlow.new(user: user1)
-    bit = BitBox.create(&.user_id(user2.id)
+    bit = BitFactory.create(&.user_id(user2.id)
       .title("Cool website!")
       .group_id(group.id))
 
@@ -67,11 +67,11 @@ describe "User visits bit homepage" do
   end
 
   it "can delete a bit" do
-    user = UserBox.create
-    group = GroupBox.create(&.title("Fun Pod"))
-    MembershipBox.create(&.user_id(user.id).group_id(group.id))
+    user = UserFactory.create
+    group = GroupFactory.create(&.title("Fun Pod"))
+    MembershipFactory.create(&.user_id(user.id).group_id(group.id))
     flow = BitFlow.new(user: user)
-    bit = BitBox.create(&.user_id(user.id).group_id(group.id))
+    bit = BitFactory.create(&.user_id(user.id).group_id(group.id))
 
     flow.sign_in
     flow.visit_group_index
@@ -83,14 +83,14 @@ describe "User visits bit homepage" do
   end
 
   it "shows only my bits" do
-    user = UserBox.create
-    other = UserBox.create
-    group = GroupBox.create
-    MembershipBox.create(&.user_id(user.id).group_id(group.id))
-    MembershipBox.create(&.user_id(other.id).group_id(group.id))
+    user = UserFactory.create
+    other = UserFactory.create
+    group = GroupFactory.create
+    MembershipFactory.create(&.user_id(user.id).group_id(group.id))
+    MembershipFactory.create(&.user_id(other.id).group_id(group.id))
     flow = BitFlow.new(user: user)
-    bit = BitBox.create(&.user_id(user.id).group_id(group.id).title("Meee"))
-    other_bit = BitBox.create(&.user_id(other.id).group_id(group.id).title("Someone else"))
+    bit = BitFactory.create(&.user_id(user.id).group_id(group.id).title("Meee"))
+    other_bit = BitFactory.create(&.user_id(other.id).group_id(group.id).title("Someone else"))
 
     flow.sign_in
     flow.visit_bit_index
