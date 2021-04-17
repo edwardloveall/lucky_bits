@@ -41,8 +41,6 @@ jobs:
       - name: Install yarn packages
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: yarn install --frozen-lockfile --no-progress
-      - name: Compiling assets
-        run: yarn prod
 
       - uses: actions/checkout@v2
       - name: Cache Crystal
