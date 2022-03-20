@@ -1,4 +1,4 @@
-class Db::Seed::SampleData < LuckyCli::Task
+class Db::Seed::SampleData < LuckyTask::Task
   summary "Add sample database records helpful for development"
 
   def call

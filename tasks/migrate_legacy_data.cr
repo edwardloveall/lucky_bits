@@ -10,7 +10,7 @@
 # group called LuckyBits. It maps the user to one of the same username and
 # keeps all the timestamps, but it does not keep the bit IDs.
 
-class Db::MigrateLegacyData < LuckyCli::Task
+class Db::MigrateLegacyData < LuckyTask::Task
   @user_id_map = {} of Int32 => Int64
 
   summary <<-TEXT
