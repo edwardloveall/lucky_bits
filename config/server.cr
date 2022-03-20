@@ -23,6 +23,12 @@ Lucky::ForceSSLHandler.configure do |settings|
   settings.enabled = false
 end
 
+Lucky::RequestIdHandler.configure do |settings|
+  settings.set_request_id = ->(context : HTTP::Server::Context) {
+    UUID.random.to_s
+  }
+end
+
 private def secret_key_from_env
   ENV["SECRET_KEY_BASE"]? || raise_missing_secret_key_in_production
 end

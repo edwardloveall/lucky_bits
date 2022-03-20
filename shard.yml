@@ -8,12 +8,12 @@ targets:
   linkybits:
     main: src/linkybits.cr
 
-crystal: 1.0.0
+crystal: ">= 1.0.0"
 
 dependencies:
   authentic:
     github: luckyframework/authentic
-    version: ~> 0.8.0
+    version: ~> 0.8.1
   carbon:
     github: luckyframework/carbon
     version: ~> 0.2.0
@@ -22,13 +22,13 @@ dependencies:
     version: ~> 0.2.0
   lucky:
     github: luckyframework/lucky
-    version: ~> 0.28.0
+    version: ~> 0.29.0
   lucky_env:
     github: luckyframework/lucky_env
-    version: ~> 0.1.0
+    version: ~> 0.1.4
   lucky_task:
     github: luckyframework/lucky_task
-    version: ~> 0.1.0
+    version: ~> 0.1.1
 development_dependencies:
   breeze:
     github: luckyframework/breeze
