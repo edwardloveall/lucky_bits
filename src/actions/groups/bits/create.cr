@@ -1,5 +1,5 @@
 class Groups::Bits::Create < BrowserAction
-  nested_route do
+  post "/groups/:group_id/bits" do
     group = GroupQuery.find(group_id)
     SaveBit.create(
       params,

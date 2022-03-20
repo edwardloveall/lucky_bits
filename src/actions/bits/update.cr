@@ -1,5 +1,5 @@
 class Bits::Update < BrowserAction
-  route do
+  put "/bits/:bit_id" do
     bit = BitQuery.find(bit_id)
     SaveBit.update(bit, params) do |operation, bit|
       if operation.saved?

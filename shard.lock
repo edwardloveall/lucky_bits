@@ -2,15 +2,27 @@ version: 2.0
 shards:
   authentic:
     git: https://github.com/luckyframework/authentic.git
-    version: 0.7.3
+    version: 0.8.0
 
   avram:
     git: https://github.com/luckyframework/avram.git
-    version: 0.20.0
+    version: 0.21.1
+
+  backtracer:
+    git: https://github.com/sija/backtracer.cr.git
+    version: 1.2.1
+
+  breeze:
+    git: https://github.com/luckyframework/breeze.git
+    version: 0.2.0
 
   carbon:
     git: https://github.com/luckyframework/carbon.git
-    version: 0.1.4
+    version: 0.2.0
+
+  carbon_sendgrid_adapter:
+    git: https://github.com/luckyframework/carbon_sendgrid_adapter.git
+    version: 0.2.0
 
   cry:
     git: https://github.com/luckyframework/cry.git
@@ -30,7 +42,7 @@ shards:
 
   exception_page:
     git: https://github.com/crystal-loot/exception_page.git
-    version: 0.1.5
+    version: 0.2.2
 
   habitat:
     git: https://github.com/luckyframework/habitat.git
@@ -38,7 +50,7 @@ shards:
 
   lucky:
     git: https://github.com/luckyframework/lucky.git
-    version: 0.27.2
+    version: 0.28.0
 
   lucky_env:
     git: https://github.com/luckyframework/lucky_env.git
@@ -50,7 +62,7 @@ shards:
 
   lucky_router:
     git: https://github.com/luckyframework/lucky_router.git
-    version: 0.4.2
+    version: 0.5.1
 
   lucky_task:
     git: https://github.com/luckyframework/lucky_task.git
@@ -58,7 +70,7 @@ shards:
 
   pg:
     git: https://github.com/will/crystal-pg.git
-    version: 0.23.2
+    version: 0.24.0
 
   pulsar:
     git: https://github.com/luckyframework/pulsar.git
@@ -82,5 +94,5 @@ shards:
 
   wordsmith:
     git: https://github.com/luckyframework/wordsmith.git
-    version: 0.2.2
+    version: 0.3.0
 

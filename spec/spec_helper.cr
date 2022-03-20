@@ -5,6 +5,7 @@ require "../src/app"
 require "./support/flows/base_flow"
 require "./support/**"
 require "../db/migrations/**"
+require "breeze/spec_helpers"
 
 # Add/modify files in spec/setup to start/configure programs or run hooks
 #

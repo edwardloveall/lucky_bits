@@ -1,5 +1,5 @@
 class Bits::Index < BrowserAction
-  route do
+  get "/bits" do
     html IndexPage, bits: BitQuery.for(current_user)
   end
 end

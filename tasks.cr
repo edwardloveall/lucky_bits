@@ -6,5 +6,6 @@ require "lucky_task"
 require "./tasks/**"
 require "./db/migrations/**"
 require "lucky/tasks/**"
+require "breeze/tasks"
 
 LuckyTask::Runner.run

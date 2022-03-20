@@ -1,5 +1,7 @@
 abstract class BrowserAction < Lucky::Action
+  include Lucky::EnforceUnderscoredRoute
   include Lucky::ProtectFromForgery
+  include Lucky::SecureHeaders::DisableFLoC
   include Authentic::ActionHelpers(User)
   include Auth::SignInThroughBackdoor
   include Auth::RequireSignIn

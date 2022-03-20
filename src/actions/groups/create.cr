@@ -1,5 +1,5 @@
 class Groups::Create < BrowserAction
-  route do
+  post "/groups" do
     SaveGroup.create(params: params) do |operation, group|
       if group
         flash.success = "Group created!"

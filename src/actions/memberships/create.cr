@@ -1,7 +1,7 @@
 class Memberships::Create < BrowserAction
   param group_id : Group::PrimaryKeyType
 
-  route do
+  post "/memberships" do
     GroupInvite.create(params, group_id: group_id) do |operation, membership|
       if membership
         flash.success = "#{membership.user!.username} is now a member!"

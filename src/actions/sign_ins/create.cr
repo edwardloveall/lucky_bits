@@ -1,7 +1,7 @@
 class SignIns::Create < BrowserAction
   include Auth::RedirectIfSignedIn
 
-  route do
+  post "/sign_ins" do
     SignInUser.run(params) do |operation, authenticated_user|
       if authenticated_user
         sign_in(authenticated_user)

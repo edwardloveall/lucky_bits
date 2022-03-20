@@ -1,5 +1,5 @@
 class Bits::Delete < BrowserAction
-  route do
+  delete "/bits/:bit_id" do
     bit = BitQuery.find(bit_id)
     bit.delete
     flash.success = "Bit deleted."

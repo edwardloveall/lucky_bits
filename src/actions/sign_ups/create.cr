@@ -1,7 +1,7 @@
 class SignUps::Create < BrowserAction
   include Auth::RedirectIfSignedIn
 
-  route do
+  post "/sign_ups" do
     SignUpUser.create(params) do |operation, user|
       if user
         flash.info = "Thanks for signing up"
