@@ -32,7 +32,7 @@ jobs:
       - name: Install Crystal
         uses: crystal-lang/install-crystal@v1
         with:
-          crystal: 0.36.1
+          crystal: 1.2.0
       - name: Install shards
         run: shards install
       - name: Install yarn packages
