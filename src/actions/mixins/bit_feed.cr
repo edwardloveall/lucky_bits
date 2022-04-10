@@ -48,7 +48,7 @@ module BitFeed
         "link",
         rel: "alternate",
         type: "text/html",
-        href: URI.encode(bit.url)
+        href: bit.url
       )
       xml.element(
         "link",
