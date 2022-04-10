@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+
+const sassPlugin = require("esbuild-sass-plugin").sassPlugin;
+
+let watch = process.argv.includes("--watch");
+let minify = process.argv.includes("--minify");
+let sourcemap = process.argv.includes("--sourcemap");
+
+if (watch) {
+  watch = {
+    onRebuild(error, result) {
+      if (error) console.error("Build failed:", error);
+      else console.log("Built");
+    },
+  };
+}
+
+console.log("Building...");
+require("esbuild")
+  .build({
+    bundle: true,
+    entryPoints: ["src/js/app.js", "src/css/app.scss"],
+    minify,
+    outdir: "public",
+    plugins: [sassPlugin()],
+    sourcemap,
+    watch,
+  })
+  .catch(() => process.exit(1))
+  .then(() => console.log("Built"));

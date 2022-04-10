@@ -1,0 +1,4 @@
+{
+  "com.edwardloveall.Crystal.crystalPath" : "~\/.asdf\/shims\/crystal",
+  "com.edwardloveall.Crystal.formatOnSave" : true
+}

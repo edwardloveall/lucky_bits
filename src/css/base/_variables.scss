@@ -43,8 +43,8 @@ $font-size-x-large: rem(64px);
 
 // Spacing
 $spacing-base: 1rem;
-$spacing-x-small: $spacing-base / 4;
-$spacing-small: $spacing-base / 2;
+$spacing-x-small: math.div($spacing-base, 4);
+$spacing-small: math.div($spacing-base, 2);
 $spacing-medium: $spacing-base * 1.5;
 $spacing-large: $spacing-base * 2;
 $spacing-x-large: $spacing-base * 4;
@@ -56,11 +56,11 @@ $color-offblack: #333;
 $color-gray: #5c5c5c;
 $color-offwhite: #fdfdfc;
 $color-light-tan: #faf3e6;
-$color-blue: hsl(210, 100, 60);
-$color-green: hsl(80, 100, 40);
+$color-blue: hsl(210, 100%, 60%);
+$color-green: hsl(80, 100%, 40%);
 $color-red: rgb(236, 104, 104);
-$color-yellow: hsl(60, 100, 80);
-$color-purple: hsl(270, 100, 60);
+$color-yellow: hsl(60, 100%, 80%);
+$color-purple: hsl(270, 100%, 60%);
 
 // Color use
 

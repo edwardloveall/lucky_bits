@@ -1,5 +1,5 @@
 require "./shards"
-Lucky::AssetHelpers.load_manifest
+Lucky::AssetHelpers.load_manifest "public/manifest.json"
 require "../config/**"
 require "./app_database"
 require "./models/base_model"
