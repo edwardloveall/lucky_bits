@@ -8,108 +8,41 @@ on:
   pull_request:
 
 jobs:
-  CheckFormat:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: crystal-lang/install-crystal@v1
-        with:
-          crystal: latest
-
-      - name: Format
-        run: crystal tool format --check
-
-      - name: Set up Crystal cache
-        uses: actions/cache@v2.1.7
-        id: crystal-cache
-        with:
-          path: |
-            ~/.cache/crystal
-            bin/ameba
-            lib
-          key: ${{ runner.os }}-crystal-${{ hashFiles('**/shard.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-crystal-
-
-      - name: Install shards
-        if: steps.crystal-cache.outputs.cache-hit != 'true'
-        run: shards check || shards install --ignore-crystal-version
-
-      - name: Run ameba linter
-        run: ./bin/ameba
-
-  RunSpecs:
-    runs-on: ubuntu-latest
-
-    env:
-      LUCKY_ENV: test
-
+  specs:
     strategy:
-      fail-fast: true
-      matrix:
-        crystal_version:
-          - 1.2.0
-          - latest
-        experimental:
-          - false
-        include:
-          - crystal_version: nightly
-            experimental: true
-
+      fail-fast: false
+    runs-on: ubuntu-latest
     services:
       postgres:
         image: postgres:12-alpine
         env:
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         ports:
           - 5432:5432
-        # Set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: crystal-lang/install-crystal@v1
+      - uses: actions/checkout@v2.3.4
+      - name: Install Crystal
+        uses: crystal-lang/install-crystal@v1
         with:
-          crystal: ${{ matrix.crystal_version }}
-
-      - name: Set up Yarn cache
-        uses: actions/cache@v2.1.7
-        with:
-<<<<<<< HEAD
           crystal: 1.2.0
-=======
-          path: "**/node_modules"
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Set up Crystal cache
-        uses: actions/cache@v2.1.7
-        id: crystal-cache
+      - uses: actions/setup-node@v2.3.0
         with:
-          path: |
-            ~/.cache/crystal
-            bin/ameba
-            lib
-          key: ${{ runner.os }}-crystal-${{ matrix.crystal_version }}-${{ hashFiles('**/shard.lock') }}
+          node-version: "12.x"
+      - name: Cache node modules
+        uses: actions/cache@v2.1.5
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-crystal-
-
->>>>>>> 0014ec7 (try CI from lucky jumpstart)
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
       - name: Install shards
-        if: steps.crystal-cache.outputs.cache-hit != 'true'
-        run: shards check || shards install --ignore-crystal-version
-
-      - name: Install yarn packages
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn install --frozen-lockfile --no-progress
-
-      - name: Compile assets
-        run: yarn prod
-
+        run: shards install
       - name: Run tests
         run: crystal spec
