@@ -45,4 +45,4 @@ jobs:
       - name: Install shards
         run: shards install
       - name: Run tests
-        run: crystal spec
+        run: crystal spec --error-trace
