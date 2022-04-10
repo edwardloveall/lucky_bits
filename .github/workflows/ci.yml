@@ -1,43 +1,48 @@
 name: CI
 
-on: pull_request
+on:
+  workflow_call:
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
-  test:
-    runs-on: ubuntu-18.04
+  specs:
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres
+        image: postgres:12-alpine
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: linkybits_test
-        # Set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+          POSTGRES_PASSWORD: postgres
         ports:
-          # Map tcp port 5432 on service container to the host
-          # Now Lucky can access it at localhost:5432 instead of postgres:5432
-          # https://docs.github.com/en/actions/using-containerized-services/creating-postgresql-service-containers
           - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "14"
+      - uses: actions/checkout@v2.3.4
       - name: Install Crystal
         uses: crystal-lang/install-crystal@v1
         with:
           crystal: 1.2.0
+      - uses: actions/setup-node@v2.3.0
+        with:
+          node-version: "12.x"
+      - name: Cache node modules
+        uses: actions/cache@v2.1.5
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
       - name: Install shards
         run: shards install
-      - name: Install yarn packages
-        run: yarn install --frozen-lockfile --no-progress
-      - name: Compile assets
-        run: yarn prod
       - name: Run tests
-        run: crystal spec
+        run: crystal spec --error-trace

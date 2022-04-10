@@ -10,3 +10,4 @@ start_server
 *.local.cr
 /public/js
 /public/css
+.nova
