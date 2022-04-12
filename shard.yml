@@ -32,7 +32,7 @@ dependencies:
 development_dependencies:
   breeze:
     github: luckyframework/breeze
-    version: ~> 0.2.0
+    branch: main
   lucky_flow:
     github: luckyframework/lucky_flow
     version: ~> 0.7.3

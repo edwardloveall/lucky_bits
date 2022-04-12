@@ -1,43 +1,103 @@
-name: CI
+name: Lucky App CI
 
-on: pull_request
+on:
+  push:
+  pull_request:
 
 jobs:
-  test:
-    runs-on: ubuntu-18.04
+  CheckFormat:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.0.0
+
+      - uses: oprypin/install-crystal@v1
+        with:
+          crystal: latest
+
+      - name: Format
+        run: crystal tool format --check
+
+      - name: Set up Crystal cache
+        uses: actions/cache@v3.0.2
+        id: crystal-cache
+        with:
+          path: |
+            ~/.cache/crystal
+            lib
+          key: ${{ runner.os }}-crystal-${{ hashFiles('**/shard.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-crystal-
+
+      - name: Install shards
+        if: steps.crystal-cache.outputs.cache-hit != 'true'
+        run: shards check || shards install --ignore-crystal-version
+
+  RunSpecs:
+    runs-on: ubuntu-latest
+
+    env:
+      LUCKY_ENV: test
+
+    strategy:
+      fail-fast: true
+      matrix:
+        crystal_version:
+          - latest
+        experimental:
+          - false
+        include:
+          - crystal_version: nightly
+            experimental: true
+
     services:
       postgres:
-        image: postgres
+        image: postgres:12-alpine
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: linkybits_test
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-        ports:
-          # Map tcp port 5432 on service container to the host
-          # Now Lucky can access it at localhost:5432 instead of postgres:5432
-          # https://docs.github.com/en/actions/using-containerized-services/creating-postgresql-service-containers
-          - 5432:5432
+
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3.0.0
+
+      - uses: oprypin/install-crystal@v1
         with:
-          node-version: "14"
-      - name: Install Crystal
-        uses: crystal-lang/install-crystal@v1
+          crystal: ${{ matrix.crystal_version }}
+
+      - name: Set up Yarn cache
+        uses: actions/cache@v3.0.2
         with:
-          crystal: 1.2.0
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Set up Crystal cache
+        uses: actions/cache@v3.0.2
+        id: crystal-cache
+        with:
+          path: |
+            ~/.cache/crystal
+            lib
+          key: ${{ runner.os }}-crystal-${{ matrix.crystal_version }}-${{ hashFiles('**/shard.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-crystal-
+
       - name: Install shards
-        run: shards install
+        if: steps.crystal-cache.outputs.cache-hit != 'true'
+        run: shards check || shards install --ignore-crystal-version
+
       - name: Install yarn packages
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install --frozen-lockfile --no-progress
+
       - name: Compile assets
         run: yarn prod
+
       - name: Run tests
-        run: crystal spec
+        run: |
+          crystal spec
