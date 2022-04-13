@@ -14,15 +14,15 @@ shards:
 
   breeze:
     git: https://github.com/luckyframework/breeze.git
-    version: 0.2.0
+    version: 0.2.0+git.commit.61f25bfa1e19957df10fc927b64a3428a82a6a00
 
   carbon:
     git: https://github.com/luckyframework/carbon.git
-    version: 0.2.0
+    version: 0.2.1
 
   carbon_sendgrid_adapter:
     git: https://github.com/luckyframework/carbon_sendgrid_adapter.git
-    version: 0.2.0
+    version: 0.2.1
 
   cry:
     git: https://github.com/luckyframework/cry.git
@@ -38,7 +38,7 @@ shards:
 
   dexter:
     git: https://github.com/luckyframework/dexter.git
-    version: 0.3.3
+    version: 0.3.4
 
   exception_page:
     git: https://github.com/crystal-loot/exception_page.git
@@ -54,7 +54,7 @@ shards:
 
   lucky_cache:
     git: https://github.com/luckyframework/lucky_cache.git
-    version: 0.1.0
+    version: 0.1.1
 
   lucky_env:
     git: https://github.com/luckyframework/lucky_env.git
@@ -78,7 +78,7 @@ shards:
 
   pulsar:
     git: https://github.com/luckyframework/pulsar.git
-    version: 0.2.2
+    version: 0.2.3
 
   selenium:
     git: https://github.com/matthewmcgarvey/selenium.cr.git
