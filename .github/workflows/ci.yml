@@ -42,12 +42,9 @@ jobs:
       fail-fast: true
       matrix:
         crystal_version:
-          - latest
+          - 1.2.0
         experimental:
           - false
-        include:
-          - crystal_version: nightly
-            experimental: true
 
     services:
       postgres:
@@ -99,5 +96,9 @@ jobs:
         run: yarn prod
 
       - name: Run tests
-        run: |
-          crystal spec
+        run: crystal spec
+        env:
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_USERNAME: postgres
+          DB_PASSWORD: postgres
